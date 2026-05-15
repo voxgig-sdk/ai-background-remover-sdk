@@ -1,0 +1,18 @@
+# BasicBackgroundRemovalFlow
+
+main: kit: flow: BasicBackgroundRemovalFlow:
+{
+  entity: "background_removal",
+  kind: "basic",
+  name: "BasicBackgroundRemovalFlow",
+  step: [
+    {
+      input: {
+        ref: "background_removal_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicBackgroundRemovalFlow"
+}

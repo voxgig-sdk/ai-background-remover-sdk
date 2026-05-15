@@ -1,0 +1,34 @@
+{
+  "existing": {
+    "background_removal": {
+      "BACKGROUND_REMOVAL00": {
+        "format": "s28",
+        "image_url": "s29",
+        "message": "s2a",
+        "success": false
+      },
+      "BACKGROUND_REMOVAL01": {
+        "format": "s50",
+        "image_url": "s51",
+        "message": "s52",
+        "success": false
+      },
+      "BACKGROUND_REMOVAL02": {
+        "format": "s78",
+        "image_url": "s79",
+        "message": "s7a",
+        "success": false
+      }
+    }
+  },
+  "new": {
+    "background_removal": {
+      "background_removal_ref01": {
+        "format": "sa0",
+        "image_url": "sa1",
+        "message": "sa2",
+        "success": false
+      }
+    }
+  }
+}

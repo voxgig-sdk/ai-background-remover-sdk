@@ -1,0 +1,195 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "AI Background Remover",
+    "description": "This API allows users to instantly remove backgrounds from images using advanced AI technology. The tool is designed to be secure, fast, and user-friendly, providing high-quality results without the need for user sign-up. Users can upload their images and get transparent background outputs quickly.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://www.aibackgroundremover.site/"
+    },
+    "termsOfService": "https://www.aibackgroundremover.site/terms-of-service"
+  },
+  "servers": [
+    {
+      "url": "https://www.aibackgroundremover.site",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/api/remove-background": {
+      "post": {
+        "summary": "Remove background from image",
+        "description": "Upload an image to automatically remove its background using AI. Returns a transparent PNG with the subject isolated from the background. Supports JPG, PNG, and WEBP formats.",
+        "operationId": "removeBackground",
+        "tags": [
+          "Background Removal"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "image"
+                ],
+                "properties": {
+                  "image": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "The image file to process. Supported formats: JPG, PNG, WEBP"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully removed background from image",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary",
+                  "description": "High-quality transparent PNG image with background removed"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Background removed successfully"
+                    },
+                    "imageUrl": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URL to download the processed image",
+                      "example": "https://www.aibackgroundremover.site/outputs/abc123.png"
+                    },
+                    "format": {
+                      "type": "string",
+                      "example": "PNG"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Invalid image format or corrupted file",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "string",
+                      "example": "Invalid image format. Supported formats: JPG, PNG, WEBP"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload too large - Image file size exceeds limit",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "string",
+                      "example": "Image file size exceeds maximum allowed size"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error - Processing failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": false
+                    },
+                    "error": {
+                      "type": "string",
+                      "example": "Failed to process image. Please try again."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "example": false
+          },
+          "error": {
+            "type": "string",
+            "description": "Error message describing what went wrong"
+          }
+        }
+      },
+      "SuccessResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "example": true
+          },
+          "message": {
+            "type": "string",
+            "description": "Success message"
+          },
+          "imageUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to download the processed image with transparent background"
+          },
+          "format": {
+            "type": "string",
+            "description": "Output image format",
+            "example": "PNG"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Background Removal",
+      "description": "AI-powered background removal operations"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://www.aibackgroundremover.site/"
+      }
+      description: "This API allows users to instantly remove backgrounds from images using advanced AI technology. The tool is designed to be secure, fast, and user-friendly, providing high-quality results without the need for user sign-up. Users can upload their images and get transparent background outputs quickly."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://www.aibackgroundremover.site"
+        }
+      ]
+      termsOfService: "https://www.aibackgroundremover.site/terms-of-service"
+      title: "AI Background Remover"
+      version: "1.0.0"
+    }
+  }
+}
+
+}
