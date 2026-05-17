@@ -3,9 +3,9 @@ package utility
 import (
 	"strings"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/ai-background-remover-sdk/go/utility/struct"
 
-	"github.com/voxgig-sdk/ai-background-remover-sdk/core"
+	"github.com/voxgig-sdk/ai-background-remover-sdk/go/core"
 )
 
 func makePointUtil(ctx *core.Context) (map[string]any, error) {

@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/ai-background-remover-sdk"
-	"github.com/voxgig-sdk/ai-background-remover-sdk/core"
+	sdk "github.com/voxgig-sdk/ai-background-remover-sdk/go"
+	"github.com/voxgig-sdk/ai-background-remover-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/ai-background-remover-sdk/go/utility/struct"
 )
 
 func TestBackgroundRemovalEntity(t *testing.T) {

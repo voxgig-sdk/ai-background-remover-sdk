@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/ai-background-remover-sdk/core"
+import "github.com/voxgig-sdk/ai-background-remover-sdk/go/core"
 
 func prepareMethodUtil(ctx *core.Context) string {
 	opname := ctx.Op.Name

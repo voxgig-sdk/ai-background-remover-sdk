@@ -1,10 +1,10 @@
 package voxgigaibackgroundremoversdk
 
 import (
-	"github.com/voxgig-sdk/ai-background-remover-sdk/core"
-	"github.com/voxgig-sdk/ai-background-remover-sdk/entity"
-	"github.com/voxgig-sdk/ai-background-remover-sdk/feature"
-	_ "github.com/voxgig-sdk/ai-background-remover-sdk/utility"
+	"github.com/voxgig-sdk/ai-background-remover-sdk/go/core"
+	"github.com/voxgig-sdk/ai-background-remover-sdk/go/entity"
+	"github.com/voxgig-sdk/ai-background-remover-sdk/go/feature"
+	_ "github.com/voxgig-sdk/ai-background-remover-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

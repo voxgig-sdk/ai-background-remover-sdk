@@ -4,7 +4,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/voxgig-sdk/ai-background-remover-sdk/core"
+	"github.com/voxgig-sdk/ai-background-remover-sdk/go/core"
 )
 
 type LogFeature struct {

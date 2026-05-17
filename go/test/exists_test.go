@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/ai-background-remover-sdk"
+	sdk "github.com/voxgig-sdk/ai-background-remover-sdk/go"
 )
 
 func TestExists(t *testing.T) {

@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/ai-background-remover-sdk/core"
+	"github.com/voxgig-sdk/ai-background-remover-sdk/go/core"
 )
 
 type BaseFeature struct {
