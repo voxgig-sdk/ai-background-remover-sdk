@@ -113,7 +113,6 @@ function basicSetup(extra?: any) {
     'AI_BACKGROUND_REMOVER_TEST_BACKGROUND_REMOVAL_ENTID': idmap,
     'AI_BACKGROUND_REMOVER_TEST_LIVE': 'FALSE',
     'AI_BACKGROUND_REMOVER_TEST_EXPLAIN': 'FALSE',
-    'AI_BACKGROUND_REMOVER_APIKEY': 'NONE',
   })
 
   idmap = env['AI_BACKGROUND_REMOVER_TEST_BACKGROUND_REMOVAL_ENTID']
@@ -123,7 +122,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new AiBackgroundRemoverSDK(merge([
       {
-        apikey: env.AI_BACKGROUND_REMOVER_APIKEY,
       },
       extra
     ]))

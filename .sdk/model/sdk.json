@@ -17,7 +17,15 @@
         ],
         "termsOfService": "https://www.aibackgroundremover.site/terms-of-service",
         "title": "AI Background Remover",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Remove image backgrounds with an AI service that returns a transparent-background image, no sign-up required",
+        "homepage": "https://www.aibackgroundremover.site",
+        "docs_url": "https://freepublicapis.com/ai-background-remover",
+        "about_md": "[AI Background Remover](https://www.aibackgroundremover.site) is a free web service that strips the background from an uploaded image and returns the cut-out subject on a transparent canvas. It is positioned as a no-account, browser-friendly tool aimed at quick one-off edits.\n\nWhat you get from the API:\n\n- Upload an image and receive a version with the background removed\n- Transparent-background output suitable for compositing or further editing\n- Public access without registration or API keys\n\nOperational notes: CORS is enabled, so the endpoint can be called directly from browser-side code. The catalogue listing on freepublicapis.com reports sub-second typical response times and tracks uptime, but no published rate limits, quotas, or formal SLA are documented. Treat it as a best-effort public endpoint.",
+        "entity_desc": {
+          "background_removal": "Represents the image background-removal operation exposed by the service — submit an image to the API and receive the same image with its background made transparent."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -25,7 +33,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "background_removal": {

@@ -28,16 +28,13 @@ package main
 
 import (
     "fmt"
-    "os"
 
     sdk "github.com/voxgig-sdk/ai-background-remover-sdk/go"
     "github.com/voxgig-sdk/ai-background-remover-sdk/go/core"
 )
 
 func main() {
-    client := sdk.NewAiBackgroundRemoverSDK(map[string]any{
-        "apikey": os.Getenv("AI-BACKGROUND-REMOVER_APIKEY"),
-    })
+    client := sdk.NewAiBackgroundRemoverSDK(map[string]any{})
 ```
 
 ### 4. Create, update, and remove
@@ -135,7 +132,6 @@ Create a `.env.local` file at the project root:
 
 ```
 AI-BACKGROUND-REMOVER_TEST_LIVE=TRUE
-AI-BACKGROUND-REMOVER_APIKEY=<your-key>
 ```
 
 Then run:
@@ -157,7 +153,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `"apikey"` | `string` | API key for authentication. |
 | `"base"` | `string` | Base URL of the API server. |
 | `"prefix"` | `string` | URL path prefix prepended to all requests. |
 | `"suffix"` | `string` | URL path suffix appended to all requests. |
