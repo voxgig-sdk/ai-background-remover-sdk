@@ -110,6 +110,7 @@ func background_removalBasicSetup(extra map[string]any) *entityTestSetup {
 		"AIBACKGROUNDREMOVER_TEST_BACKGROUND_REMOVAL_ENTID": idmap,
 		"AIBACKGROUNDREMOVER_TEST_LIVE":      "FALSE",
 		"AIBACKGROUNDREMOVER_TEST_EXPLAIN":   "FALSE",
+		"AIBACKGROUNDREMOVER_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["AIBACKGROUNDREMOVER_TEST_BACKGROUND_REMOVAL_ENTID"])
@@ -120,6 +121,7 @@ func background_removalBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["AIBACKGROUNDREMOVER_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["AIBACKGROUNDREMOVER_APIKEY"],
 			},
 			extra,
 		})

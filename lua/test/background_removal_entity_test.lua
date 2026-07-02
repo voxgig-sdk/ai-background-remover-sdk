@@ -86,6 +86,7 @@ function background_removal_basic_setup(extra)
     ["AIBACKGROUNDREMOVER_TEST_BACKGROUND_REMOVAL_ENTID"] = idmap,
     ["AIBACKGROUNDREMOVER_TEST_LIVE"] = "FALSE",
     ["AIBACKGROUNDREMOVER_TEST_EXPLAIN"] = "FALSE",
+    ["AIBACKGROUNDREMOVER_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -97,6 +98,7 @@ function background_removal_basic_setup(extra)
   if env["AIBACKGROUNDREMOVER_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["AIBACKGROUNDREMOVER_APIKEY"],
       },
       extra or {},
     })

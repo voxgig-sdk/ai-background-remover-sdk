@@ -1,6 +1,11 @@
 # AiBackgroundRemover Python SDK
 
-The Python SDK for the AiBackgroundRemover API. Provides an entity-oriented interface following Pythonic conventions.
+
+
+The Python SDK for the AiBackgroundRemover API — an entity-oriented client following Pythonic conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -23,16 +28,19 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
+import os
 from aibackgroundremover_sdk import AiBackgroundRemoverSDK
 
-client = AiBackgroundRemoverSDK({})
+client = AiBackgroundRemoverSDK({
+    "apikey": os.environ.get("AI-BACKGROUND-REMOVER_APIKEY"),
+})
 ```
 
 ### 4. Create, update, and remove
 
 ```python
 # Create
-created, _ = client.BackgroundRemoval(None).create({"name": "Example"}, None)
+created, _ = client.BackgroundRemoval().create({"name": "Example"})
 
 ```
 
@@ -78,11 +86,9 @@ print(fetchdef["headers"])
 Create a mock client for unit testing — no server required:
 
 ```python
-client = AiBackgroundRemoverSDK.test(None, None)
+client = AiBackgroundRemoverSDK.test()
 
-result, err = client.AiBackgroundRemover(None).load(
-    {"id": "test01"}, None
-)
+result, err = client.AiBackgroundRemover().load({"id": "test01"})
 # result contains mock response data
 ```
 
@@ -113,6 +119,7 @@ Create a `.env.local` file at the project root:
 
 ```
 AI-BACKGROUND-REMOVER_TEST_LIVE=TRUE
+AI-BACKGROUND-REMOVER_APIKEY=<your-key>
 ```
 
 Then run:
@@ -136,6 +143,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |

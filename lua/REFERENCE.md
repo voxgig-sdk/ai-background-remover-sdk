@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -103,8 +103,8 @@ local background_removal = client:BackgroundRemoval(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:BackgroundRemoval(nil):create({
-}, nil)
+local result, err = client:BackgroundRemoval():create({
+})
 ```
 
 ### Common Methods

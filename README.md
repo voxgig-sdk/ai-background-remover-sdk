@@ -1,20 +1,8 @@
 # AiBackgroundRemover SDK
 
-Remove image backgrounds with an AI service that returns a transparent-background image, no sign-up required
+AI Background Remover client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About AI Background Remover
-
-[AI Background Remover](https://www.aibackgroundremover.site) is a free web service that strips the background from an uploaded image and returns the cut-out subject on a transparent canvas. It is positioned as a no-account, browser-friendly tool aimed at quick one-off edits.
-
-What you get from the API:
-
-- Upload an image and receive a version with the background removed
-- Transparent-background output suitable for compositing or further editing
-- Public access without registration or API keys
-
-Operational notes: CORS is enabled, so the endpoint can be called directly from browser-side code. The catalogue listing on freepublicapis.com reports sub-second typical response times and tracks uptime, but no published rate limits, quotas, or formal SLA are documented. Treat it as a best-effort public endpoint.
 
 ## Try it
 
@@ -48,27 +36,28 @@ gem install ai-background-remover-sdk
 luarocks install ai-background-remover-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { AiBackgroundRemoverSDK } from 'ai-background-remover'
 
-const client = new AiBackgroundRemoverSDK({})
+const client = new AiBackgroundRemoverSDK({
+  apikey: process.env.AI-BACKGROUND-REMOVER_APIKEY,
+})
 
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -98,7 +87,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **BackgroundRemoval** | Represents the image background-removal operation exposed by the service — submit an image to the API and receive the same image with its background made transparent. | `/api/remove-background` |
+| **BackgroundRemoval** |  | `/api/remove-background` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -108,9 +97,12 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from aibackgroundremover_sdk import AiBackgroundRemoverSDK
 
-client = AiBackgroundRemoverSDK({})
+client = AiBackgroundRemoverSDK({
+    "apikey": os.environ.get("AI-BACKGROUND-REMOVER_APIKEY"),
+})
 
 ```
 
@@ -120,7 +112,9 @@ client = AiBackgroundRemoverSDK({})
 <?php
 require_once 'aibackgroundremover_sdk.php';
 
-$client = new AiBackgroundRemoverSDK([]);
+$client = new AiBackgroundRemoverSDK([
+    "apikey" => getenv("AI-BACKGROUND-REMOVER_APIKEY"),
+]);
 
 ```
 
@@ -129,7 +123,9 @@ $client = new AiBackgroundRemoverSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/ai-background-remover-sdk/go"
 
-client := sdk.NewAiBackgroundRemoverSDK(map[string]any{})
+client := sdk.NewAiBackgroundRemoverSDK(map[string]any{
+    "apikey": os.Getenv("AI-BACKGROUND-REMOVER_APIKEY"),
+})
 
 ```
 
@@ -138,7 +134,9 @@ client := sdk.NewAiBackgroundRemoverSDK(map[string]any{})
 ```ruby
 require_relative "AiBackgroundRemover_sdk"
 
-client = AiBackgroundRemoverSDK.new({})
+client = AiBackgroundRemoverSDK.new({
+  "apikey" => ENV["AI-BACKGROUND-REMOVER_APIKEY"],
+})
 
 ```
 
@@ -147,7 +145,9 @@ client = AiBackgroundRemoverSDK.new({})
 ```lua
 local sdk = require("ai-background-remover_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("AI-BACKGROUND-REMOVER_APIKEY"),
+})
 
 ```
 
@@ -167,25 +167,21 @@ const result = await client.BackgroundRemoval().load({ id: 'test01' })
 ### Python
 
 ```python
-client = AiBackgroundRemoverSDK.test(None, None)
-result, err = client.BackgroundRemoval(None).load(
-    {"id": "test01"}, None
-)
+client = AiBackgroundRemoverSDK.test()
+result, err = client.BackgroundRemoval().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = AiBackgroundRemoverSDK::test(null, null);
-[$result, $err] = $client->BackgroundRemoval(null)->load(
-    ["id" => "test01"], null
-);
+$client = AiBackgroundRemoverSDK::test();
+[$result, $err] = $client->BackgroundRemoval()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.BackgroundRemoval(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -194,19 +190,15 @@ result, err := client.BackgroundRemoval(nil).Load(
 ### Ruby
 
 ```ruby
-client = AiBackgroundRemoverSDK.test(nil, nil)
-result, err = client.BackgroundRemoval(nil).load(
-  { "id" => "test01" }, nil
-)
+client = AiBackgroundRemoverSDK.test
+result, err = client.BackgroundRemoval().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:BackgroundRemoval(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:BackgroundRemoval():load({ id = "test01" })
 ```
 
 ## How it works
@@ -310,11 +302,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the AI Background Remover
-
-- Upstream: [https://www.aibackgroundremover.site](https://www.aibackgroundremover.site)
-- API docs: [https://freepublicapis.com/ai-background-remover](https://freepublicapis.com/ai-background-remover)
 
 ---
 
