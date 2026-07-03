@@ -10,7 +10,7 @@ The TypeScript SDK for the AiBackgroundRemover API — a type-safe, entity-orien
 
 ## Install
 ```bash
-npm install ai-background-remover
+npm install @voxgig-sdk/ai-background-remover
 ```
 ## Tutorial: your first API call
 

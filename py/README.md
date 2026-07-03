@@ -10,7 +10,7 @@ The Python SDK for the AiBackgroundRemover API — an entity-oriented client fol
 
 ## Install
 ```bash
-pip install ai-background-remover-sdk
+pip install voxgig-sdk-ai-background-remover
 ```
 
 Or install from source:

@@ -10,13 +10,13 @@ The Ruby SDK for the AiBackgroundRemover API — an entity-oriented client using
 
 ## Install
 ```bash
-gem install ai-background-remover-sdk
+gem install voxgig-sdk-ai-background-remover
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "ai-background-remover-sdk"
+gem "voxgig-sdk-ai-background-remover"
 ```
 
 Then run:

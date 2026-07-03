@@ -10,7 +10,7 @@ The PHP SDK for the AiBackgroundRemover API — an entity-oriented client using 
 
 ## Install
 ```bash
-composer require voxgig/ai-background-remover-sdk
+composer require voxgig-sdk/ai-background-remover
 ```
 
 

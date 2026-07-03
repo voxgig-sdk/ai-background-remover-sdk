@@ -10,7 +10,7 @@ The Lua SDK for the AiBackgroundRemover API — an entity-oriented client using 
 
 ## Install
 ```bash
-luarocks install ai-background-remover-sdk
+luarocks install voxgig-sdk-ai-background-remover
 ```
 
 If the module is not yet published, add the source directory to
