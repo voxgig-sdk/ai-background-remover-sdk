@@ -86,7 +86,7 @@ same parameters as `direct()`. Raises on error.
 ## BackgroundRemovalEntity
 
 ```ruby
-background_removal = client.background_removal
+background_removal = client.BackgroundRemoval
 ```
 
 ### Fields
@@ -105,7 +105,7 @@ background_removal = client.background_removal
 Create a new entity with the given data. Raises on error.
 
 ```ruby
-result = client.background_removal.create({
+result = client.BackgroundRemoval.create({
 })
 ```
 

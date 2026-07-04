@@ -109,7 +109,7 @@ Alias for `AiBackgroundRemoverSDK.test()`.
 ## BackgroundRemovalEntity
 
 ```ts
-const background_removal = client.background_removal
+const background_removal = client.BackgroundRemoval()
 ```
 
 ### Fields
@@ -128,7 +128,7 @@ const background_removal = client.background_removal
 Create a new entity with the given data.
 
 ```ts
-const result = await client.background_removal.create({
+const result = await client.BackgroundRemoval().create({
 })
 ```
 

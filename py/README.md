@@ -34,8 +34,8 @@ client = AiBackgroundRemoverSDK()
 ### 4. Create, update, and remove
 
 ```python
-# Create
-created = client.backgroundremoval.create({"name": "Example"})
+# Create — returns the bare created record (a dict)
+created = client.BackgroundRemoval().create({"name": "Example"})
 
 ```
 
@@ -82,8 +82,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = AiBackgroundRemoverSDK.test()
 
-result = client.backgroundremoval.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+backgroundremoval = client.BackgroundRemoval().load({"id": "test01"})
+# backgroundremoval contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -219,7 +220,7 @@ API path: `/api/remove-background`
 
 ### BackgroundRemoval
 
-Create an instance: `const background_removal = client.background_removal`
+Create an instance: `background_removal = client.BackgroundRemoval()`
 
 #### Operations
 
@@ -238,8 +239,8 @@ Create an instance: `const background_removal = client.background_removal`
 
 #### Example: Create
 
-```ts
-const background_removal = await client.background_removal.create({
+```python
+background_removal = client.BackgroundRemoval().create({
 })
 ```
 
@@ -314,7 +315,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-backgroundremoval = client.backgroundremoval
+backgroundremoval = client.BackgroundRemoval()
 backgroundremoval.load({"id": "example_id"})
 
 # backgroundremoval.data_get() now returns the loaded backgroundremoval data

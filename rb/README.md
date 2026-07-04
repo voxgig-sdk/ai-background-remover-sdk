@@ -31,8 +31,8 @@ client = AiBackgroundRemoverSDK.new
 ### 4. Create, update, and remove
 
 ```ruby
-# Create
-created = client.backgroundremoval.create({ "name" => "Example" })
+# create returns the bare created BackgroundRemoval record.
+created = client.BackgroundRemoval.create({ "name" => "Example" })
 
 ```
 
@@ -77,13 +77,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = AiBackgroundRemoverSDK.test
+client = AiBackgroundRemoverSDK.test({
+  "entity" => { "backgroundremoval" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.backgroundremoval.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+backgroundremoval = client.BackgroundRemoval.load({ "id" => "test01" })
+puts backgroundremoval
 ```
 
 ### Use a custom fetch function
@@ -218,7 +222,7 @@ API path: `/api/remove-background`
 
 ### BackgroundRemoval
 
-Create an instance: `const background_removal = client.background_removal`
+Create an instance: `background_removal = client.BackgroundRemoval`
 
 #### Operations
 
@@ -237,8 +241,8 @@ Create an instance: `const background_removal = client.background_removal`
 
 #### Example: Create
 
-```ts
-const background_removal = await client.background_removal.create({
+```ruby
+background_removal = client.BackgroundRemoval.create({
 })
 ```
 
@@ -314,7 +318,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-backgroundremoval = client.backgroundremoval
+backgroundremoval = client.BackgroundRemoval
 backgroundremoval.load({ "id" => "example_id" })
 
 # backgroundremoval.data_get now returns the loaded backgroundremoval data

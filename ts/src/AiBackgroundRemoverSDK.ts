@@ -204,14 +204,7 @@ class AiBackgroundRemoverSDK {
 
 
 
-  _background_removal?: BackgroundRemovalEntity
-
-  // Idiomatic facade: `client.background_removal.list()` / `client.background_removal.load({ id })`.
-  get background_removal(): BackgroundRemovalEntity {
-    return (this._background_removal ??= new BackgroundRemovalEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.background_removal` instead. */
+  // Entity access: `client.BackgroundRemoval().list()` / `client.BackgroundRemoval().load({ id })`.
   BackgroundRemoval(data?: any) {
     const self = this
     return new BackgroundRemovalEntity(self,data)

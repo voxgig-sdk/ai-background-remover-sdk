@@ -80,7 +80,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## BackgroundRemovalEntity
 
 ```python
-background_removal = client.background_removal
+background_removal = client.BackgroundRemoval()
 ```
 
 ### Fields
@@ -99,7 +99,7 @@ background_removal = client.background_removal
 Create a new entity with the given data. Returns the created entity data and raises on error.
 
 ```python
-result = client.background_removal.create({
+result = client.BackgroundRemoval().create({
 })
 ```
 

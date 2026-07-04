@@ -83,7 +83,7 @@ same parameters as `direct()`.
 ## BackgroundRemovalEntity
 
 ```lua
-local background_removal = client:background_removal(nil)
+local background_removal = client:BackgroundRemoval(nil)
 ```
 
 ### Fields
@@ -102,7 +102,7 @@ local background_removal = client:background_removal(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:background_removal():create({
+local result, err = client:BackgroundRemoval():create({
 })
 ```
 

@@ -233,10 +233,10 @@ class AiBackgroundRemoverSDK
 
     private $_background_removal = null;
 
-    // Idiomatic facade: $client->background_removal()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias BackgroundRemoval() (PHP method
-    // names are case-insensitive).
-    public function background_removal($data = null)
+    // Canonical facade: $client->BackgroundRemoval()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->background_removal()
+    // resolves here too.
+    public function BackgroundRemoval($data = null)
     {
         require_once __DIR__ . '/entity/background_removal_entity.php';
         if ($data === null) {

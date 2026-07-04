@@ -208,13 +208,7 @@ class AiBackgroundRemoverSDK
   end
 
 
-  # Idiomatic facade: client.background_removal.list / client.background_removal.load({ "id" => ... })
-  def background_removal
-    require_relative 'entity/background_removal_entity'
-    @background_removal ||= BackgroundRemovalEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.background_removal instead.
+  # Canonical facade: client.BackgroundRemoval.list / client.BackgroundRemoval.load({ "id" => ... })
   def BackgroundRemoval(data = nil)
     require_relative 'entity/background_removal_entity'
     BackgroundRemovalEntity.new(self, data)

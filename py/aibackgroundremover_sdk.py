@@ -220,25 +220,15 @@ class AiBackgroundRemoverSDK:
         }
 
 
-    @property
-    def background_removal(self):
-        """Idiomatic facade: client.background_removal.list() / client.background_removal.load({"id": ...})."""
-        from entity.background_removal_entity import BackgroundRemovalEntity
-        cached = getattr(self, "_background_removal", None)
-        if cached is None:
-            cached = BackgroundRemovalEntity(self, None)
-            self._background_removal = cached
-        return cached
-
-    def BackgroundRemoval(self, data=None):
-        # Deprecated: use client.background_removal instead.
+    def BackgroundRemoval(self, data=None) -> "BackgroundRemovalEntity":
+        """Entity factory: client.BackgroundRemoval().list({}) / client.BackgroundRemoval().load({"id": ...})."""
         from entity.background_removal_entity import BackgroundRemovalEntity
         return BackgroundRemovalEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "AiBackgroundRemoverSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class AiBackgroundRemoverSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.background_removal_entity import BackgroundRemovalEntity
