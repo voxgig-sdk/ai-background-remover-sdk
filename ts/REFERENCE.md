@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -110,7 +109,7 @@ Alias for `AiBackgroundRemoverSDK.test()`.
 ## BackgroundRemovalEntity
 
 ```ts
-const background_removal = client.BackgroundRemoval()
+const background_removal = client.background_removal
 ```
 
 ### Fields
@@ -129,7 +128,7 @@ const background_removal = client.BackgroundRemoval()
 Create a new entity with the given data.
 
 ```ts
-const result = await client.BackgroundRemoval().create({
+const result = await client.background_removal.create({
 })
 ```
 

@@ -83,6 +83,10 @@ end
 
 
 
+---@param reqdata BackgroundRemovalCreateData
+---@param ctrl? table
+---@return BackgroundRemoval
+---@return string? err
 function BackgroundRemovalEntity:create(reqdata, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

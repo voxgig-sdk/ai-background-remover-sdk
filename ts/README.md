@@ -9,9 +9,12 @@ The TypeScript SDK for the AiBackgroundRemover API — a type-safe, entity-orien
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/ai-background-remover
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/ai-background-remover-sdk/releases](https://github.com/voxgig-sdk/ai-background-remover-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,18 +23,16 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { AiBackgroundRemoverSDK } from 'ai-background-remover'
+import { AiBackgroundRemoverSDK } from '@voxgig-sdk/ai-background-remover'
 
-const client = new AiBackgroundRemoverSDK({
-  apikey: process.env.AI-BACKGROUND-REMOVER_APIKEY,
-})
+const client = new AiBackgroundRemoverSDK()
 ```
 
 ### 4. Create, update, and remove
 
 ```ts
 // Create
-const created = await client.BackgroundRemoval().create({
+const created = await client.backgroundremoval.create({
   name: 'Example',
 })
 
@@ -79,7 +80,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = AiBackgroundRemoverSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.backgroundremoval.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -87,7 +88,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new AiBackgroundRemoverSDK({ apikey: '...' })
+const client = new AiBackgroundRemoverSDK()
 const testClient = client.tester()
 ```
 
@@ -96,7 +97,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.backgroundremoval
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -123,7 +124,6 @@ const logger = {
 }
 
 const client = new AiBackgroundRemoverSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -133,8 +133,7 @@ const client = new AiBackgroundRemoverSDK({
 Create a `.env.local` file at the project root:
 
 ```
-AI-BACKGROUND-REMOVER_TEST_LIVE=TRUE
-AI-BACKGROUND-REMOVER_APIKEY=<your-key>
+AI_BACKGROUND_REMOVER_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -152,7 +151,6 @@ cd ts && npm test
 
 ```ts
 new AiBackgroundRemoverSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -163,7 +161,6 @@ new AiBackgroundRemoverSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -269,7 +266,7 @@ API path: `/api/remove-background`
 
 ### BackgroundRemoval
 
-Create an instance: `const background_removal = client.BackgroundRemoval()`
+Create an instance: `const background_removal = client.background_removal`
 
 #### Operations
 
@@ -289,7 +286,7 @@ Create an instance: `const background_removal = client.BackgroundRemoval()`
 #### Example: Create
 
 ```ts
-const background_removal = await client.BackgroundRemoval().create({
+const background_removal = await client.background_removal.create({
 })
 ```
 
@@ -351,7 +348,7 @@ ai-background-remover/
 Import the SDK from the package root:
 
 ```ts
-import { AiBackgroundRemoverSDK } from 'ai-background-remover'
+import { AiBackgroundRemoverSDK } from '@voxgig-sdk/ai-background-remover'
 ```
 
 ### Entity state
@@ -361,11 +358,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const backgroundremoval = client.backgroundremoval
+await backgroundremoval.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// backgroundremoval.data() now returns the loaded backgroundremoval data
+// backgroundremoval.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

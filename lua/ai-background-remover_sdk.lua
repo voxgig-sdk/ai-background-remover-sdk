@@ -244,6 +244,19 @@ end
 
 
 
+-- Idiomatic facade: client:background_removal():list() / client:background_removal():load({ id = ... })
+function AiBackgroundRemoverSDK:background_removal(data)
+  local EntityMod = require("entity.background_removal_entity")
+  if data == nil then
+    if self._background_removal == nil then
+      self._background_removal = EntityMod.new(self, nil)
+    end
+    return self._background_removal
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:background_removal() instead.
 function AiBackgroundRemoverSDK:BackgroundRemoval(data)
   local EntityMod = require("entity.background_removal_entity")
   return EntityMod.new(self, data)

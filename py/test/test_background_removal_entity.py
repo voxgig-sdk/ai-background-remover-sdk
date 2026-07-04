@@ -44,9 +44,7 @@ class TestBackgroundRemovalEntity:
         background_removal_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.background_removal"), "background_removal_ref01"))
 
-        background_removal_ref01_data_result, err = background_removal_ref01_ent.create(background_removal_ref01_data, None)
-        assert err is None
-        background_removal_ref01_data = helpers.to_map(background_removal_ref01_data_result)
+        background_removal_ref01_data = helpers.to_map(background_removal_ref01_ent.create(background_removal_ref01_data, None))
         assert background_removal_ref01_data is not None
 
 
@@ -87,7 +85,6 @@ def _background_removal_basic_setup(extra):
         "AIBACKGROUNDREMOVER_TEST_BACKGROUND_REMOVAL_ENTID": idmap,
         "AIBACKGROUNDREMOVER_TEST_LIVE": "FALSE",
         "AIBACKGROUNDREMOVER_TEST_EXPLAIN": "FALSE",
-        "AIBACKGROUNDREMOVER_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -98,7 +95,6 @@ def _background_removal_basic_setup(extra):
     if env.get("AIBACKGROUNDREMOVER_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("AIBACKGROUNDREMOVER_APIKEY"),
             },
             extra or {},
         ])

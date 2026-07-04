@@ -245,6 +245,9 @@ func (sdk *AiBackgroundRemoverSDK) Direct(fetchargs map[string]any) (map[string]
 }
 
 
+// BackgroundRemoval returns a BackgroundRemoval entity bound to this client.
+// Idiomatic usage: client.BackgroundRemoval(nil).List(nil, nil) or
+// client.BackgroundRemoval(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *AiBackgroundRemoverSDK) BackgroundRemoval(data map[string]any) AiBackgroundRemoverEntity {
 	return NewBackgroundRemovalEntityFunc(sdk, data)
 }

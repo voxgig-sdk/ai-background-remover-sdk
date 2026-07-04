@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  BackgroundRemoval,
+  BackgroundRemovalCreateData,
+} from '../AiBackgroundRemoverTypes'
 
 // TODO: needs Entity superclass
-class BackgroundRemovalEntity extends AiBackgroundRemoverEntityBase {
+class BackgroundRemovalEntity extends AiBackgroundRemoverEntityBase<BackgroundRemoval> {
 
   constructor(client: AiBackgroundRemoverSDK, entopts: any) {
     super(client, entopts)
@@ -34,7 +38,7 @@ class BackgroundRemovalEntity extends AiBackgroundRemoverEntityBase {
 
 
 
-  async create(this: any, reqdata?: any, ctrl?: Control) {
+  async create(this: any, reqdata?: BackgroundRemovalCreateData, ctrl?: Control): Promise<BackgroundRemoval> {
 
     const utility = this._utility
     const {
@@ -133,7 +137,9 @@ class BackgroundRemovalEntity extends AiBackgroundRemoverEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<BackgroundRemoval> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

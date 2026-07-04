@@ -45,6 +45,7 @@ class BackgroundRemovalEntity
     end
   end
 
+  # @return [BackgroundRemoval, Hash] the current BackgroundRemoval data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class BackgroundRemovalEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of BackgroundRemoval fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -67,6 +69,11 @@ class BackgroundRemovalEntity
   
 
   
+  # Create a new BackgroundRemoval.
+  #
+  # @param reqdata [BackgroundRemovalCreateData, Hash, nil] body data
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [BackgroundRemoval, Hash] the created BackgroundRemoval; raises AiBackgroundRemoverError on failure
   def create(reqdata, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

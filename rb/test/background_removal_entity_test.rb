@@ -36,8 +36,7 @@ class BackgroundRemovalEntityTest < Minitest::Test
     background_removal_ref01_data = Helpers.to_map(Vs.getprop(
       Vs.getpath(setup[:data], "new.background_removal"), "background_removal_ref01"))
 
-    background_removal_ref01_data_result, err = background_removal_ref01_ent.create(background_removal_ref01_data, nil)
-    assert_nil err
+    background_removal_ref01_data_result = background_removal_ref01_ent.create(background_removal_ref01_data, nil)
     background_removal_ref01_data = Helpers.to_map(background_removal_ref01_data_result)
     assert !background_removal_ref01_data.nil?
 
@@ -77,7 +76,6 @@ def background_removal_basic_setup(extra)
     "AIBACKGROUNDREMOVER_TEST_BACKGROUND_REMOVAL_ENTID" => idmap,
     "AIBACKGROUNDREMOVER_TEST_LIVE" => "FALSE",
     "AIBACKGROUNDREMOVER_TEST_EXPLAIN" => "FALSE",
-    "AIBACKGROUNDREMOVER_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -89,7 +87,6 @@ def background_removal_basic_setup(extra)
   if env["AIBACKGROUNDREMOVER_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["AIBACKGROUNDREMOVER_APIKEY"],
       },
       extra || {},
     ])

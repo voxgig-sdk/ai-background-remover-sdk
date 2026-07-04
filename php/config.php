@@ -20,9 +20,6 @@ class AiBackgroundRemoverConfig
             ],
             "options" => [
                 "base" => "https://www.aibackgroundremover.site",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
