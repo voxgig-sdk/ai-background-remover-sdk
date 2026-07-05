@@ -21,7 +21,7 @@ class BackgroundRemoval
     public ?bool $success = null;
 }
 
-/** Match filter for BackgroundRemoval#create (any subset of BackgroundRemoval fields). */
+/** Request payload for BackgroundRemoval#create. */
 class BackgroundRemovalCreateData
 {
     public ?string $format = null;

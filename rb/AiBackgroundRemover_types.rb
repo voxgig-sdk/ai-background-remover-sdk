@@ -29,7 +29,7 @@ BackgroundRemoval = Struct.new(
   keyword_init: true
 )
 
-# Match filter for BackgroundRemoval#create (any subset of BackgroundRemoval fields).
+# Request payload for BackgroundRemoval#create.
 #
 # @!attribute [rw] format
 #   @return [String, nil]

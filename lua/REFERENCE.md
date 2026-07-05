@@ -90,10 +90,10 @@ local background_removal = client:BackgroundRemoval(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `format` | ``$STRING`` | No |  |
-| `image_url` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
+| `format` | `string` | No |  |
+| `image_url` | `string` | No |  |
+| `message` | `string` | No |  |
+| `success` | `boolean` | No |  |
 
 ### Operations
 

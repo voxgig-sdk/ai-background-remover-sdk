@@ -12,5 +12,10 @@ export interface BackgroundRemoval {
   success?: boolean
 }
 
-export type BackgroundRemovalCreateData = Partial<BackgroundRemoval>
+export interface BackgroundRemovalCreateData {
+  format?: string
+  image_url?: string
+  message?: string
+  success?: boolean
+}
 

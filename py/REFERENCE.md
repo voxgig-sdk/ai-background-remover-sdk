@@ -8,7 +8,7 @@ Complete API reference for the AiBackgroundRemover Python SDK.
 ### Constructor
 
 ```python
-from ai-background-remover_sdk import AiBackgroundRemoverSDK
+from aibackgroundremover_sdk import AiBackgroundRemoverSDK
 
 client = AiBackgroundRemoverSDK(options)
 ```
@@ -87,10 +87,10 @@ background_removal = client.BackgroundRemoval()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `format` | ``$STRING`` | No |  |
-| `image_url` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
+| `format` | `str` | No |  |
+| `image_url` | `str` | No |  |
+| `message` | `str` | No |  |
+| `success` | `bool` | No |  |
 
 ### Operations
 

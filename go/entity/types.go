@@ -16,8 +16,7 @@ type BackgroundRemoval struct {
 	Success *bool `json:"success,omitempty"`
 }
 
-// BackgroundRemovalCreateData mirrors the background_removal fields as an all-optional match
-// filter (Go analog of Partial<BackgroundRemoval>).
+// BackgroundRemovalCreateData is the typed request payload for BackgroundRemoval.CreateTyped.
 type BackgroundRemovalCreateData struct {
 	Format *string `json:"format,omitempty"`
 	ImageUrl *string `json:"image_url,omitempty"`

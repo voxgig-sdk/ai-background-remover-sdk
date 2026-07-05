@@ -8,7 +8,7 @@ Complete API reference for the AiBackgroundRemover PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/ai-background-remover_sdk.php';
+require_once __DIR__ . '/aibackgroundremover_sdk.php';
 
 $client = new AiBackgroundRemoverSDK($options);
 ```
@@ -45,11 +45,11 @@ $client = AiBackgroundRemoverSDK::test();
 
 Create a new `BackgroundRemovalEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): AiBackgroundRemoverUtility`
 
 Return a copy of the SDK utility object.
 
@@ -92,10 +92,10 @@ $background_removal = $client->BackgroundRemoval();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `format` | ``$STRING`` | No |  |
-| `image_url` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
+| `format` | `string` | No |  |
+| `image_url` | `string` | No |  |
+| `message` | `string` | No |  |
+| `success` | `bool` | No |  |
 
 ### Operations
 
@@ -110,19 +110,19 @@ $result = $client->BackgroundRemoval()->create([
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -131,7 +131,7 @@ Set the entity match criteria.
 Create a new `BackgroundRemovalEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

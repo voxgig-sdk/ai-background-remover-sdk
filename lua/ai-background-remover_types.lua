@@ -13,6 +13,10 @@
 ---@field success? boolean
 
 ---@class BackgroundRemovalCreateData
+---@field format? string
+---@field image_url? string
+---@field message? string
+---@field success? boolean
 
 local M = {}
 

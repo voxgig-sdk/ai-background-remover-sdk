@@ -221,7 +221,7 @@ class AiBackgroundRemoverSDK:
 
 
     def BackgroundRemoval(self, data=None) -> "BackgroundRemovalEntity":
-        """Entity factory: client.BackgroundRemoval().list({}) / client.BackgroundRemoval().load({"id": ...})."""
+        """Entity factory: client.BackgroundRemoval().list() / client.BackgroundRemoval().load({"id": ...})."""
         from entity.background_removal_entity import BackgroundRemovalEntity
         return BackgroundRemovalEntity(self, data)
 

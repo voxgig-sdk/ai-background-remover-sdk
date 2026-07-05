@@ -8,7 +8,7 @@ Complete API reference for the AiBackgroundRemover Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'ai-background-remover_sdk'
+require_relative 'AiBackgroundRemover_sdk'
 
 client = AiBackgroundRemoverSDK.new(options)
 ```
@@ -93,10 +93,10 @@ background_removal = client.BackgroundRemoval
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `format` | ``$STRING`` | No |  |
-| `image_url` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
+| `format` | `String` | No |  |
+| `image_url` | `String` | No |  |
+| `message` | `String` | No |  |
+| `success` | `Boolean` | No |  |
 
 ### Operations
 
