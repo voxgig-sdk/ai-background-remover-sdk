@@ -50,8 +50,8 @@ import (
 func main() {
     client := sdk.New()
 
-    // Create a backgroundremoval.
-    created, err := client.BackgroundRemoval(nil).Create(map[string]any{"format": "example", "image_url": "example"}, nil)
+    // Create a backgroundRemoval.
+    created, err := client.BackgroundRemoval(nil).Create(map[string]any{"format": "example_format", "image_url": "example_image_url"}, nil)
     if err != nil {
         panic(err)
     }
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-backgroundremoval, err := client.BackgroundRemoval(nil).Create(
+backgroundRemoval, err := client.BackgroundRemoval(nil).Create(
     map[string]any{"format": "example", "image_url": "example", "message": "example"}, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(backgroundremoval) // the returned mock data
+fmt.Println(backgroundRemoval) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -245,9 +245,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    backgroundremoval, err := client.BackgroundRemoval(nil).Create(map[string]any{/* fields */}, nil)
+    backgroundRemoval, err := client.BackgroundRemoval(nil).Create(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // backgroundremoval is the returned record
+    // backgroundRemoval is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -274,7 +274,7 @@ API path: `/api/remove-background`
 
 ### BackgroundRemoval
 
-Create an instance: `background_removal := client.BackgroundRemoval(nil)`
+Create an instance: `backgroundRemoval := client.BackgroundRemoval(nil)`
 
 #### Operations
 
@@ -296,6 +296,10 @@ Create an instance: `background_removal := client.BackgroundRemoval(nil)`
 ```go
 result, err := client.BackgroundRemoval(nil).Create(map[string]any{
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 

@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -204,15 +201,18 @@
           "url": "https://www.aibackgroundremover.site/"
         },
         "description": "This API allows users to instantly remove backgrounds from images using advanced AI technology. The tool is designed to be secure, fast, and user-friendly, providing high-quality results without the need for user sign-up. Users can upload their images and get transparent background outputs quickly.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://www.aibackgroundremover.site"
           }
         ],
+        "summary": "This API allows users to instantly remove backgrounds from images using advanced AI technology.",
         "termsOfService": "https://www.aibackgroundremover.site/terms-of-service",
         "title": "AI Background Remover",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://aibackgroundremover.site"
       },
       "option": {},
       "target": {
@@ -265,6 +265,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -315,6 +318,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

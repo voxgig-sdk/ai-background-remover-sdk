@@ -40,7 +40,7 @@ client = AiBackgroundRemoverSDK()
 
 ```python
 # Create — returns the bare created record (a dict)
-created = client.BackgroundRemoval().create({"format": "example", "image_url": "example"})
+created = client.BackgroundRemoval().create({"format": "example_format", "image_url": "example_image_url"})
 
 ```
 

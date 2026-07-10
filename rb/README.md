@@ -34,7 +34,7 @@ client = AiBackgroundRemoverSDK.new
 
 ```ruby
 # create returns the bare created BackgroundRemoval record.
-created = client.BackgroundRemoval.create({ "format" => "example", "image_url" => "example" })
+created = client.BackgroundRemoval.create({ "format" => "example_format", "image_url" => "example_image_url" })
 
 ```
 

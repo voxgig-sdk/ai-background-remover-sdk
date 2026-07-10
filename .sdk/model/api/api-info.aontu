@@ -15,10 +15,10 @@ main: {
           url: "https://www.aibackgroundremover.site"
         }
       ]
+      summary: "This API allows users to instantly remove backgrounds from images using advanced AI technology."
       termsOfService: "https://www.aibackgroundremover.site/terms-of-service"
       title: "AI Background Remover"
       version: "1.0.0"
+      website: "https://aibackgroundremover.site"
     }
   }
-}
-

@@ -90,7 +90,8 @@ same parameters as `Direct()`.
 ## BackgroundRemovalEntity
 
 ```go
-background_removal := client.BackgroundRemoval(nil)
+backgroundRemoval := client.BackgroundRemoval(nil)
+fmt.Println(backgroundRemoval.GetName()) // "background_removal"
 ```
 
 ### Fields
@@ -111,6 +112,10 @@ Create a new entity with the given data.
 ```go
 result, err := client.BackgroundRemoval(nil).Create(map[string]any{
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

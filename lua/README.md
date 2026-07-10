@@ -37,7 +37,7 @@ local client = sdk.new()
 
 ```lua
 -- Create
-local created, err = client:BackgroundRemoval():create({ format = "example", image_url = "example" })
+local created, err = client:BackgroundRemoval():create({ format = "example_format", image_url = "example_image_url" })
 if err then error(err) end
 
 ```
