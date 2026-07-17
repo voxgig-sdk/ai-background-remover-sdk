@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- AiBackgroundRemover SDK exists test
 
 local sdk = require("ai-background-remover_sdk")
 
