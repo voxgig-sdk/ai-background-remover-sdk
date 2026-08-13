@@ -99,7 +99,7 @@ fmt.Println(backgroundRemoval.GetName()) // "background_removal"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `format` | `string` | No |  |
-| `image_url` | `string` | No |  |
+| `imageUrl` | `string` | No |  |
 | `message` | `string` | No |  |
 | `success` | `bool` | No |  |
 

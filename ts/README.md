@@ -36,10 +36,10 @@ const client = new AiBackgroundRemoverSDK()
 ### 4. Create, update, and remove
 
 ```ts
-// Create — returns the created BackgroundRemoval
+// Create — returns the created BackgroundRemoval ENTITY (.data() for the record)
 const created = await client.BackgroundRemoval().create({
   format: 'example_format',
-  image_url: 'example_image_url',
+  imageUrl: 'example_imageUrl',
 })
 
 ```
@@ -51,7 +51,7 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const backgroundremoval = await client.BackgroundRemoval().create({ format: "example", image_url: "example", message: "example" })
+  const backgroundremoval = await client.BackgroundRemoval().create({ format: "example", imageUrl: "example", message: "example" })
   console.log(backgroundremoval)
 } catch (err) {
   console.error('create failed:', err)
@@ -118,8 +118,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = AiBackgroundRemoverSDK.test()
 
-const backgroundremoval = await client.BackgroundRemoval().create({ format: 'example_format', image_url: 'example_image_url', message: 'example_message' })
-// backgroundremoval is a bare entity populated with mock response data
+const backgroundremoval = await client.BackgroundRemoval().create({ format: 'example_format', imageUrl: 'example_imageUrl', message: 'example_message' })
+// backgroundremoval is the entity, populated with mock response data
+// — call backgroundremoval.data() for the record itself
 console.log(backgroundremoval)
 ```
 
@@ -138,7 +139,7 @@ Entity instances remember their last match and data:
 const entity = client.BackgroundRemoval()
 
 // First call runs the operation and stores its result
-await entity.create({ format: 'example_format', image_url: 'example_image_url', message: 'example_message' })
+await entity.create({ format: 'example_format', imageUrl: 'example_imageUrl', message: 'example_message' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -283,7 +284,7 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `format` |  |
-| `image_url` |  |
+| `imageUrl` |  |
 | `message` |  |
 | `success` |  |
 
@@ -311,7 +312,7 @@ Create an instance: `const background_removal = client.BackgroundRemoval()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `format` | `string` |  |
-| `image_url` | `string` |  |
+| `imageUrl` | `string` |  |
 | `message` | `string` |  |
 | `success` | `boolean` |  |
 
@@ -393,7 +394,7 @@ calls on the same instance can rely on this state.
 
 ```ts
 const backgroundremoval = client.BackgroundRemoval()
-await backgroundremoval.create({ format: "example", image_url: "example", message: "example" })
+await backgroundremoval.create({ format: "example", imageUrl: "example", message: "example" })
 
 // backgroundremoval.data() now returns the backgroundremoval data from the last `create`
 // backgroundremoval.match() returns the last match criteria

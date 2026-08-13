@@ -34,8 +34,8 @@ $client = new AiBackgroundRemoverSDK();
 ### 4. Create, update, and remove
 
 ```php
-// create() returns the bare created BackgroundRemoval record.
-$created = $client->BackgroundRemoval()->create(["format" => "example_format", "image_url" => "example_image_url"]);
+// create() returns the ENTITY — call data_get() for the created BackgroundRemoval record.
+$created = $client->BackgroundRemoval()->create(["format" => "example_format", "imageUrl" => "example_imageUrl"]);
 
 ```
 
@@ -47,7 +47,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $backgroundremoval = $client->BackgroundRemoval()->create(["format" => "example", "image_url" => "example", "message" => "example"]);
+    $backgroundremoval = $client->BackgroundRemoval()->create(["format" => "example", "imageUrl" => "example", "message" => "example"]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -119,8 +119,9 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = AiBackgroundRemoverSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$backgroundremoval = $client->BackgroundRemoval()->create(["format" => "example", "image_url" => "example", "message" => "example"]);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$backgroundremoval = $client->BackgroundRemoval()->create(["format" => "example", "imageUrl" => "example", "message" => "example"]);
 print_r($backgroundremoval);
 ```
 
@@ -218,7 +219,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -241,7 +242,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `format` |  |
-| `image_url` |  |
+| `imageUrl` |  |
 | `message` |  |
 | `success` |  |
 
@@ -269,7 +270,7 @@ Create an instance: `$background_removal = $client->BackgroundRemoval();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `format` | `string` |  |
-| `image_url` | `string` |  |
+| `imageUrl` | `string` |  |
 | `message` | `string` |  |
 | `success` | `bool` |  |
 
@@ -358,7 +359,7 @@ stores the returned data and match criteria internally.
 
 ```php
 $backgroundremoval = $client->BackgroundRemoval();
-$backgroundremoval->create(["format" => "example", "image_url" => "example", "message" => "example"]);
+$backgroundremoval->create(["format" => "example", "imageUrl" => "example", "message" => "example"]);
 
 // $backgroundremoval->data_get() now returns the backgroundremoval data from the last create
 // $backgroundremoval->match_get() returns the last match criteria

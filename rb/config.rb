@@ -34,7 +34,7 @@ module AiBackgroundRemoverConfig
             },
             {
               "active" => true,
-              "name" => "image_url",
+              "name" => "imageUrl",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 1,
@@ -63,6 +63,7 @@ module AiBackgroundRemoverConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/remove-background",
                   "parts" => [

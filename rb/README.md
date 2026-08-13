@@ -33,8 +33,8 @@ client = AiBackgroundRemoverSDK.new
 ### 4. Create, update, and remove
 
 ```ruby
-# create returns the bare created BackgroundRemoval record.
-created = client.BackgroundRemoval.create({ "format" => "example_format", "image_url" => "example_image_url" })
+# create returns the ENTITY — call data_get for the created BackgroundRemoval record.
+created = client.BackgroundRemoval.create({ "format" => "example_format", "imageUrl" => "example_imageUrl" })
 
 ```
 
@@ -45,7 +45,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  backgroundremoval = client.BackgroundRemoval.create({ "format" => "example", "image_url" => "example", "message" => "example" })
+  backgroundremoval = client.BackgroundRemoval.create({ "format" => "example", "imageUrl" => "example", "message" => "example" })
 rescue => err
   warn "create failed: #{err}"
 end
@@ -113,8 +113,9 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = AiBackgroundRemoverSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-backgroundremoval = client.BackgroundRemoval.create({ "format" => "example", "image_url" => "example", "message" => "example" })
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+backgroundremoval = client.BackgroundRemoval.create({ "format" => "example", "imageUrl" => "example", "message" => "example" })
 puts backgroundremoval
 ```
 
@@ -231,7 +232,7 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `format` |  |
-| `image_url` |  |
+| `imageUrl` |  |
 | `message` |  |
 | `success` |  |
 
@@ -259,7 +260,7 @@ Create an instance: `background_removal = client.BackgroundRemoval`
 | Field | Type | Description |
 | --- | --- | --- |
 | `format` | `String` |  |
-| `image_url` | `String` |  |
+| `imageUrl` | `String` |  |
 | `message` | `String` |  |
 | `success` | `Boolean` |  |
 
@@ -348,7 +349,7 @@ stores the returned data and match criteria internally.
 
 ```ruby
 backgroundremoval = client.BackgroundRemoval
-backgroundremoval.create({ "format" => "example", "image_url" => "example", "message" => "example" })
+backgroundremoval.create({ "format" => "example", "imageUrl" => "example", "message" => "example" })
 
 # backgroundremoval.data_get now returns the backgroundremoval data from the last create
 # backgroundremoval.match_get returns the last match criteria

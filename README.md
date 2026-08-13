@@ -25,7 +25,7 @@ support (`create`):
 const client = new AiBackgroundRemoverSDK()
 const backgroundremoval = await client.BackgroundRemoval().create({
   format: 'example',
-  image_url: 'example',
+  imageUrl: 'example',
   message: 'example',
 })
 ```
@@ -42,9 +42,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = AiBackgroundRemoverSDK.test()
-const backgroundremoval = await client.BackgroundRemoval().create({ format: 'example_format', image_url: 'example_image_url', message: 'example_message' })
-// backgroundremoval is a bare BackgroundRemoval populated with mock data
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = AiBackgroundRemoverSDK.test({
+  entity: {
+    background_removal: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const backgroundremoval = await client.BackgroundRemoval().create({ format: 'example_format', imageUrl: 'example_imageUrl', message: 'example_message' })
+// backgroundremoval is the BackgroundRemoval entity, populated with mock data
+// — call backgroundremoval.data() for the record itself
 console.log(backgroundremoval)
 ```
 
@@ -52,7 +61,7 @@ console.log(backgroundremoval)
 
 ```python
 client = AiBackgroundRemoverSDK.test()
-backgroundremoval = client.BackgroundRemoval().create({"format": "example", "image_url": "example", "message": "example"})
+backgroundremoval = client.BackgroundRemoval().create({"format": "example", "imageUrl": "example", "message": "example"})
 print(backgroundremoval)
 ```
 
@@ -63,7 +72,7 @@ print(backgroundremoval)
 $client = AiBackgroundRemoverSDK::test([
     "entity" => ["backgroundremoval" => ["test01" => []]],
 ]);
-$backgroundremoval = $client->BackgroundRemoval()->create(["format" => "example", "image_url" => "example", "message" => "example"]);
+$backgroundremoval = $client->BackgroundRemoval()->create(["format" => "example", "imageUrl" => "example", "message" => "example"]);
 ```
 
 ### Golang
@@ -71,7 +80,7 @@ $backgroundremoval = $client->BackgroundRemoval()->create(["format" => "example"
 ```go
 client := sdk.Test()
 result, err := client.BackgroundRemoval(nil).Create(
-    map[string]any{"format": "example", "image_url": "example", "message": "example"}, nil,
+    map[string]any{"format": "example", "imageUrl": "example", "message": "example"}, nil,
 )
 ```
 
@@ -82,14 +91,14 @@ result, err := client.BackgroundRemoval(nil).Create(
 client = AiBackgroundRemoverSDK.test({
   "entity" => { "backgroundremoval" => { "test01" => {} } },
 })
-backgroundremoval = client.BackgroundRemoval.create({ "format" => "example", "image_url" => "example", "message" => "example" })
+backgroundremoval = client.BackgroundRemoval.create({ "format" => "example", "imageUrl" => "example", "message" => "example" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:BackgroundRemoval():create({ format = "example", image_url = "example", message = "example" })
+local result, err = client:BackgroundRemoval():create({ format = "example", imageUrl = "example", message = "example" })
 ```
 
 ## Packages
@@ -323,6 +332,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://www.aibackgroundremover.site/](https://www.aibackgroundremover.site/)
 

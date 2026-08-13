@@ -8,13 +8,13 @@
 
 ---@class BackgroundRemoval
 ---@field format? string
----@field image_url? string
+---@field imageUrl? string
 ---@field message? string
 ---@field success? boolean
 
 ---@class BackgroundRemovalCreateData
 ---@field format? string
----@field image_url? string
+---@field imageUrl? string
 ---@field message? string
 ---@field success? boolean
 

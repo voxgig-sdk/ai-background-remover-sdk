@@ -37,7 +37,7 @@ local client = sdk.new()
 
 ```lua
 -- Create
-local created, err = client:BackgroundRemoval():create({ format = "example_format", image_url = "example_image_url" })
+local created, err = client:BackgroundRemoval():create({ format = "example_format", imageUrl = "example_imageUrl" })
 if err then error(err) end
 
 ```
@@ -49,7 +49,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local backgroundremoval, err = client:BackgroundRemoval():create({ format = "example", image_url = "example", message = "example" })
+local backgroundremoval, err = client:BackgroundRemoval():create({ format = "example", imageUrl = "example", message = "example" })
 if err then error(err) end
 ```
 
@@ -107,7 +107,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:BackgroundRemoval():create({ format = "example", image_url = "example", message = "example" })
+local result, err = client:BackgroundRemoval():create({ format = "example", imageUrl = "example", message = "example" })
 -- result is the returned data; err is set on failure
 ```
 
@@ -213,9 +213,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local background_removal, err = client:BackgroundRemoval():load()
+    local background_removal, err = client:BackgroundRemoval():list()
     if err then error(err) end
-    -- background_removal is the loaded record
+    -- background_removal is the record list
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -227,7 +227,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `format` |  |
-| `image_url` |  |
+| `imageUrl` |  |
 | `message` |  |
 | `success` |  |
 
@@ -255,7 +255,7 @@ Create an instance: `local background_removal = client:BackgroundRemoval(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `format` | `string` |  |
-| `image_url` | `string` |  |
+| `imageUrl` | `string` |  |
 | `message` | `string` |  |
 | `success` | `boolean` |  |
 
@@ -344,7 +344,7 @@ stores the returned data and match criteria internally.
 
 ```lua
 local backgroundremoval = client:BackgroundRemoval()
-backgroundremoval:create({ format = "example", image_url = "example", message = "example" })
+backgroundremoval:create({ format = "example", imageUrl = "example", message = "example" })
 
 -- backgroundremoval:data_get() now returns the backgroundremoval data from the last create
 -- backgroundremoval:match_get() returns the last match criteria

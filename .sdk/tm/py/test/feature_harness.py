@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import AiBackgroundRemoverControl
-from core.error import AiBackgroundRemoverError
-from core.result import AiBackgroundRemoverResult
-from core.spec import AiBackgroundRemoverSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import AiBackgroundRemoverControl
+from projectname_sdk.core.error import AiBackgroundRemoverError
+from projectname_sdk.core.result import AiBackgroundRemoverResult
+from projectname_sdk.core.spec import AiBackgroundRemoverSpec
 
 
 # True when this SDK was generated with the named feature.

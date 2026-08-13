@@ -51,7 +51,7 @@ func main() {
     client := sdk.New()
 
     // Create a backgroundRemoval.
-    created, err := client.BackgroundRemoval(nil).Create(map[string]any{"format": "example_format", "image_url": "example_image_url"}, nil)
+    created, err := client.BackgroundRemoval(nil).Create(map[string]any{"format": "example_format", "imageUrl": "example_imageUrl"}, nil)
     if err != nil {
         panic(err)
     }
@@ -66,7 +66,7 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-backgroundremoval, err := client.BackgroundRemoval(nil).Create(map[string]any{"format": "example", "image_url": "example", "message": "example"}, nil)
+backgroundremoval, err := client.BackgroundRemoval(nil).Create(map[string]any{"format": "example", "imageUrl": "example", "message": "example"}, nil)
 if err != nil {
     // handle err
     return
@@ -136,7 +136,7 @@ Create a mock client for unit testing — no server required:
 client := sdk.Test()
 
 backgroundRemoval, err := client.BackgroundRemoval(nil).Create(
-    map[string]any{"format": "example", "image_url": "example", "message": "example"}, nil,
+    map[string]any{"format": "example", "imageUrl": "example", "message": "example"}, nil,
 )
 if err != nil {
     panic(err)
@@ -259,7 +259,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"format"` |  |
-| `"image_url"` |  |
+| `"imageUrl"` |  |
 | `"message"` |  |
 | `"success"` |  |
 
@@ -287,7 +287,7 @@ Create an instance: `backgroundRemoval := client.BackgroundRemoval(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `format` | `string` |  |
-| `image_url` | `string` |  |
+| `imageUrl` | `string` |  |
 | `message` | `string` |  |
 | `success` | `bool` |  |
 
@@ -377,7 +377,7 @@ stores the returned data and match criteria internally.
 
 ```go
 backgroundremoval := client.BackgroundRemoval(nil)
-backgroundremoval.Create(map[string]any{"format": "example", "image_url": "example", "message": "example"}, nil)
+backgroundremoval.Create(map[string]any{"format": "example", "imageUrl": "example", "message": "example"}, nil)
 
 // backgroundremoval.Data() now returns the backgroundremoval data from the last create
 // backgroundremoval.Match() returns the last match criteria

@@ -11,7 +11,7 @@ main: kit: entity: background_removal: {
       type: "`$STRING`"
     }
     {
-      name: "image_url"
+      name: "imageUrl"
       req: false
       type: "`$STRING`"
     }

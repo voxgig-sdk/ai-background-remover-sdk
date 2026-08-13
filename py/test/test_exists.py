@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# AiBackgroundRemover SDK exists test
 
 import pytest
 from aibackgroundremover_sdk import AiBackgroundRemoverSDK

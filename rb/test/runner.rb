@@ -23,8 +23,8 @@ module AiBackgroundRemoverTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("AIBACKGROUNDREMOVER_TEST_LIVE")
-    override = getenv("AIBACKGROUNDREMOVER_TEST_OVERRIDE")
+    live = getenv("AI_BACKGROUND_REMOVER_TEST_LIVE")
+    override = getenv("AI_BACKGROUND_REMOVER_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module AiBackgroundRemoverTestRunner
       end
     end
 
-    explain = getenv("AIBACKGROUNDREMOVER_TEST_EXPLAIN")
-    m["AIBACKGROUNDREMOVER_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("AI_BACKGROUND_REMOVER_TEST_EXPLAIN")
+    m["AI_BACKGROUND_REMOVER_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

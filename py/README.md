@@ -39,8 +39,8 @@ client = AiBackgroundRemoverSDK()
 ### 4. Create, update, and remove
 
 ```python
-# Create — returns the bare created record (a dict)
-created = client.BackgroundRemoval().create({"format": "example_format", "image_url": "example_image_url"})
+# Create — returns the ENTITY (call data_get() for the record)
+created = client.BackgroundRemoval().create({"format": "example_format", "imageUrl": "example_imageUrl"})
 
 ```
 
@@ -51,7 +51,7 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    backgroundremoval = client.BackgroundRemoval().create({ "format": "example", "image_url": "example", "message": "example" })
+    backgroundremoval = client.BackgroundRemoval().create({ "format": "example", "imageUrl": "example", "message": "example" })
     print(backgroundremoval)
 except Exception as err:
     print(f"create failed: {err}")
@@ -118,8 +118,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = AiBackgroundRemoverSDK.test()
 
-# Entity ops return the bare record and raise on error.
-backgroundremoval = client.BackgroundRemoval().create({"format": "example", "image_url": "example", "message": "example"})
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+backgroundremoval = client.BackgroundRemoval().create({"format": "example", "imageUrl": "example", "message": "example"})
 # backgroundremoval contains the mock response record
 ```
 
@@ -214,7 +215,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -237,7 +238,7 @@ On error, `ok` is `False` and `err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `format` |  |
-| `image_url` |  |
+| `imageUrl` |  |
 | `message` |  |
 | `success` |  |
 
@@ -265,7 +266,7 @@ Create an instance: `background_removal = client.BackgroundRemoval()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `format` | `str` |  |
-| `image_url` | `str` |  |
+| `imageUrl` | `str` |  |
 | `message` | `str` |  |
 | `success` | `bool` |  |
 
@@ -353,7 +354,7 @@ stores the returned data and match criteria internally.
 
 ```python
 backgroundremoval = client.BackgroundRemoval()
-backgroundremoval.create({ "format": "example", "image_url": "example", "message": "example" })
+backgroundremoval.create({ "format": "example", "imageUrl": "example", "message": "example" })
 
 # backgroundremoval.data_get() now returns the backgroundremoval data from the last create
 # backgroundremoval.match_get() returns the last match criteria

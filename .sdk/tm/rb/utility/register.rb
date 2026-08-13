@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ AiBackgroundRemoverUtility.registrar = ->(u) {
   u.prepare_params = AiBackgroundRemoverUtilities::PrepareParams
   u.prepare_path = AiBackgroundRemoverUtilities::PreparePath
   u.prepare_query = AiBackgroundRemoverUtilities::PrepareQuery
+  u.graphql_body = AiBackgroundRemoverUtilities::GraphqlBody
+  u.graphql_errors = AiBackgroundRemoverUtilities::GraphqlErrors
   u.result_basic = AiBackgroundRemoverUtilities::ResultBasic
   u.result_body = AiBackgroundRemoverUtilities::ResultBody
   u.result_headers = AiBackgroundRemoverUtilities::ResultHeaders

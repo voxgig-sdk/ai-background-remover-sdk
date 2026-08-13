@@ -26,8 +26,8 @@ import {
 describe('BackgroundRemovalEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when AIBACKGROUNDREMOVER_TEST_LIVE=TRUE.
-  afterEach(liveDelay('AIBACKGROUNDREMOVER_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when AI_BACKGROUND_REMOVER_TEST_LIVE=TRUE.
+  afterEach(liveDelay('AI_BACKGROUND_REMOVER_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = AiBackgroundRemoverSDK.test()
@@ -62,7 +62,7 @@ describe('BackgroundRemovalEntity', async () => {
     const background_removal_ref01_ent = client.BackgroundRemoval()
     let background_removal_ref01_data = setup.data.new.background_removal['background_removal_ref01']
 
-    background_removal_ref01_data = await background_removal_ref01_ent.create(background_removal_ref01_data)
+    background_removal_ref01_data = (await background_removal_ref01_ent.create(background_removal_ref01_data)).data()
     assert(null != background_removal_ref01_data)
 
 

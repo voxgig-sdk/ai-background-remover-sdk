@@ -33,7 +33,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "image_url",
+            ["name"] = "imageUrl",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 1,
@@ -62,6 +62,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/api/remove-background",
                 ["parts"] = {

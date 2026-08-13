@@ -16,11 +16,11 @@
 import pytest
 
 from aibackgroundremover_sdk import AiBackgroundRemoverSDK
-from core.error import AiBackgroundRemoverError
-from core.result import AiBackgroundRemoverResult
-from core.response import AiBackgroundRemoverResponse
-from core.spec import AiBackgroundRemoverSpec
-from feature.base_feature import AiBackgroundRemoverBaseFeature
+from aibackgroundremover_sdk.core.error import AiBackgroundRemoverError
+from aibackgroundremover_sdk.core.result import AiBackgroundRemoverResult
+from aibackgroundremover_sdk.core.response import AiBackgroundRemoverResponse
+from aibackgroundremover_sdk.core.spec import AiBackgroundRemoverSpec
+from aibackgroundremover_sdk.feature.base_feature import AiBackgroundRemoverBaseFeature
 
 
 def _client():

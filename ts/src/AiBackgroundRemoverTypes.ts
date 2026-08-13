@@ -7,14 +7,14 @@
 
 export interface BackgroundRemoval {
   format?: string
-  image_url?: string
+  imageUrl?: string
   message?: string
   success?: boolean
 }
 
 export interface BackgroundRemovalCreateData {
   format?: string
-  image_url?: string
+  imageUrl?: string
   message?: string
   success?: boolean
 }

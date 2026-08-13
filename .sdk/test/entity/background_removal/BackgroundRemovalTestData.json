@@ -3,21 +3,21 @@
     "background_removal": {
       "BACKGROUND_REMOVAL00": {
         "format": "s28",
-        "image_url": "s29",
+        "imageUrl": "s29",
         "message": "s2a",
         "success": false,
         "id": "BACKGROUND_REMOVAL00"
       },
       "BACKGROUND_REMOVAL01": {
         "format": "s50",
-        "image_url": "s51",
+        "imageUrl": "s51",
         "message": "s52",
         "success": false,
         "id": "BACKGROUND_REMOVAL01"
       },
       "BACKGROUND_REMOVAL02": {
         "format": "s78",
-        "image_url": "s79",
+        "imageUrl": "s79",
         "message": "s7a",
         "success": false,
         "id": "BACKGROUND_REMOVAL02"
@@ -28,7 +28,7 @@
     "background_removal": {
       "background_removal_ref01": {
         "format": "sa0",
-        "image_url": "sa1",
+        "imageUrl": "sa1",
         "message": "sa2",
         "success": false
       }
