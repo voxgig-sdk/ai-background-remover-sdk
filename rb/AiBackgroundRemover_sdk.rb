@@ -28,7 +28,7 @@ class AiBackgroundRemoverSDK
     utility = AiBackgroundRemoverUtility.new
     @_utility = utility
 
-    config = AiBackgroundRemoverConfig.make_config
+    config = AiBackgroundRemoverConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

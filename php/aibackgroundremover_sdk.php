@@ -40,7 +40,7 @@ class AiBackgroundRemoverSDK
         $utility = new AiBackgroundRemoverUtility();
         $this->_utility = $utility;
 
-        $config = AiBackgroundRemoverConfig::make_config();
+        $config = AiBackgroundRemoverConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
