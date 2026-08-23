@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "AiBackgroundRemover",
+      slug = "ai-background-remover",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -33,6 +36,7 @@ local function make_config()
           },
           {
             ["name"] = "imageUrl",
+            ["short"] = "URL to download the processed image",
             ["type"] = "`$STRING`",
           },
           {

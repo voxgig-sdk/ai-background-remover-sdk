@@ -91,7 +91,7 @@ local background_removal = client:BackgroundRemoval(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `format` | `string` | No |  |
-| `imageUrl` | `string` | No |  |
+| `imageUrl` | `string` | No | URL to download the processed image |
 | `message` | `string` | No |  |
 | `success` | `boolean` | No |  |
 

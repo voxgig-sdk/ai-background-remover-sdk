@@ -238,7 +238,7 @@ On error, `ok` is `False` and `err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `format` |  |
-| `imageUrl` |  |
+| `imageUrl` | URL to download the processed image |
 | `message` |  |
 | `success` |  |
 
@@ -266,7 +266,7 @@ Create an instance: `background_removal = client.BackgroundRemoval()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `format` | `str` |  |
-| `imageUrl` | `str` |  |
+| `imageUrl` | `str` | URL to download the processed image |
 | `message` | `str` |  |
 | `success` | `bool` |  |
 

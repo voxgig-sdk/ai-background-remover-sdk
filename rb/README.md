@@ -232,7 +232,7 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `format` |  |
-| `imageUrl` |  |
+| `imageUrl` | URL to download the processed image |
 | `message` |  |
 | `success` |  |
 
@@ -260,7 +260,7 @@ Create an instance: `background_removal = client.BackgroundRemoval`
 | Field | Type | Description |
 | --- | --- | --- |
 | `format` | `String` |  |
-| `imageUrl` | `String` |  |
+| `imageUrl` | `String` | URL to download the processed image |
 | `message` | `String` |  |
 | `success` | `Boolean` |  |
 

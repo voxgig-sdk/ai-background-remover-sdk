@@ -13,6 +13,7 @@ main: kit: entity: background_removal: {
     {
       name: "imageUrl"
       req: false
+      short: "URL to download the processed image"
       type: "`$STRING`"
     }
     {

@@ -19,6 +19,9 @@ module AiBackgroundRemoverConfig
     {
       "main" => {
         "name" => "AiBackgroundRemover",
+        "slug" => "ai-background-remover",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -45,6 +48,7 @@ module AiBackgroundRemoverConfig
             },
             {
               "name" => "imageUrl",
+              "short" => "URL to download the processed image",
               "type" => "`$STRING`",
             },
             {

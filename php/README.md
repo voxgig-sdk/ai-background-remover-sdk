@@ -242,7 +242,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `format` |  |
-| `imageUrl` |  |
+| `imageUrl` | URL to download the processed image |
 | `message` |  |
 | `success` |  |
 
@@ -270,7 +270,7 @@ Create an instance: `$background_removal = $client->BackgroundRemoval();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `format` | `string` |  |
-| `imageUrl` | `string` |  |
+| `imageUrl` | `string` | URL to download the processed image |
 | `message` | `string` |  |
 | `success` | `bool` |  |
 

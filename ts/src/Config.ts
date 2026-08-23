@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'AiBackgroundRemover',
+        slug: "ai-background-remover",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -60,6 +71,7 @@ class Config {
         },
         {
           "name": "imageUrl",
+          "short": "URL to download the processed image",
           "type": "`$STRING`"
         },
         {

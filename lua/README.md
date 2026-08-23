@@ -227,7 +227,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `format` |  |
-| `imageUrl` |  |
+| `imageUrl` | URL to download the processed image |
 | `message` |  |
 | `success` |  |
 
@@ -255,7 +255,7 @@ Create an instance: `local background_removal = client:BackgroundRemoval(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `format` | `string` |  |
-| `imageUrl` | `string` |  |
+| `imageUrl` | `string` | URL to download the processed image |
 | `message` | `string` |  |
 | `success` | `boolean` |  |
 

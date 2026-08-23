@@ -42,6 +42,7 @@
               "active": true,
               "name": "imageUrl",
               "req": false,
+              "short": "URL to download the processed image",
               "type": "`$STRING`"
             },
             {

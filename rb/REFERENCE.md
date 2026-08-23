@@ -94,7 +94,7 @@ background_removal = client.BackgroundRemoval
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `format` | `String` | No |  |
-| `imageUrl` | `String` | No |  |
+| `imageUrl` | `String` | No | URL to download the processed image |
 | `message` | `String` | No |  |
 | `success` | `Boolean` | No |  |
 
