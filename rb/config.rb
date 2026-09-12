@@ -48,6 +48,7 @@ module AiBackgroundRemoverConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "imageUrl",
               "short" => "URL to download the processed image",
               "type" => "`$STRING`",
@@ -72,15 +73,23 @@ module AiBackgroundRemoverConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/remove-background",
-                  "parts" => [
-                    "api",
-                    "remove-background",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "remove-background",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "remove-background",
+                  ],
                 },
               ],
             },

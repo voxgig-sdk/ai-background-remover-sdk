@@ -52,7 +52,7 @@ func TestBackgroundRemovalEntity(t *testing.T) {
 		// CREATE
 		backgroundRemovalRef01Ent := client.BackgroundRemoval(nil)
 		backgroundRemovalRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "background_removal"}, setup.data), "background_removal_ref01"))
+			vs.GetPath(setup.data, []any{"new", "background_removal"}), "background_removal_ref01"))
 
 		backgroundRemovalRef01DataResult, err := backgroundRemovalRef01Ent.Create(backgroundRemovalRef01Data, nil)
 		if err != nil {
@@ -90,7 +90,7 @@ func background_removalBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"background_removal01", "background_removal02", "background_removal03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -118,10 +118,22 @@ func background_removalBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["AI_BACKGROUND_REMOVER_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewAiBackgroundRemoverSDK(core.ToMapAny(mergedOpts))
 	}

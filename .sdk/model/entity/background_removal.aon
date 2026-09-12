@@ -11,6 +11,7 @@ main: kit: entity: background_removal: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "imageUrl"
       req: false
       short: "URL to download the processed image"
@@ -36,9 +37,13 @@ main: kit: entity: background_removal: {
         {
           method: "POST"
           orig: "/api/remove-background"
-          parts: [
-            "api"
-            "remove-background"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "remove-background"
+            }
           ]
           transform: {
             req: "`reqdata`"
