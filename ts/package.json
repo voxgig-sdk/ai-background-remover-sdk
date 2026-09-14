@@ -1,5 +1,5 @@
 {
-  "name": "@voxgig-sdk/ai-background-remover",
+  "name": "@voxgig-sdk/ai-background-remover-sdk",
   "version": "0.0.1",
   "description": "Unofficial generated TypeScript SDK for the AI Background Remover public API. Not affiliated with or endorsed by the upstream API provider.",
   "keywords": [

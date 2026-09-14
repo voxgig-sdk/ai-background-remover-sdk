@@ -109,7 +109,7 @@ local result, err = client:BackgroundRemoval():create({ format = "example", imag
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/ai-background-remover` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ai-background-remover-sdk/releases) |
+| TypeScript | `@voxgig-sdk/ai-background-remover-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ai-background-remover-sdk/releases) |
 | Python | `voxgig-sdk-ai-background-remover` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ai-background-remover-sdk/releases) |
 | PHP | `voxgig-sdk/ai-background-remover` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ai-background-remover-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/ai-background-remover-sdk/go` | `go get github.com/voxgig-sdk/ai-background-remover-sdk/go@latest` |
@@ -123,7 +123,7 @@ local result, err = client:BackgroundRemoval():create({ format = "example", imag
 ### TypeScript
 
 ```ts
-import { AiBackgroundRemoverSDK } from '@voxgig-sdk/ai-background-remover'
+import { AiBackgroundRemoverSDK } from '@voxgig-sdk/ai-background-remover-sdk'
 
 const client = new AiBackgroundRemoverSDK()
 

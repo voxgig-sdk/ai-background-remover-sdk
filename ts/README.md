@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { AiBackgroundRemoverSDK } from '@voxgig-sdk/ai-background-remover'
+import { AiBackgroundRemoverSDK } from '@voxgig-sdk/ai-background-remover-sdk'
 
 const client = new AiBackgroundRemoverSDK()
 ```
@@ -406,7 +406,7 @@ ai-background-remover/
 Import the SDK from the package root:
 
 ```ts
-import { AiBackgroundRemoverSDK } from '@voxgig-sdk/ai-background-remover'
+import { AiBackgroundRemoverSDK } from '@voxgig-sdk/ai-background-remover-sdk'
 ```
 
 ### Entity state
