@@ -35,6 +35,12 @@ main: kit: entity: background_removal: {
       name: "create"
       points: [
         {
+          contract: {
+            id: "POST /api/remove-background"
+            json: "{\"operationId\":\"removeBackground\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"multipart/form-data\":{\"schema\":{\"properties\":{\"image\":{\"description\":\"The image file to process. Supported formats: JPG, PNG, WEBP\",\"format\":\"binary\",\"type\":\"string\"}},\"required\":[\"image\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"format\":{\"example\":\"PNG\",\"type\":\"string\"},\"imageUrl\":{\"description\":\"URL to download the processed image\",\"example\":\"https://www.aibackgroundremover.site/outputs/abc123.png\",\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"example\":\"Background removed successfully\",\"type\":\"string\"},\"success\":{\"example\":true,\"type\":\"boolean\"}},\"type\":\"object\"}},\"image/png\":{\"schema\":{\"description\":\"High-quality transparent PNG image with background removed\",\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successfully removed background from image\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"example\":\"Invalid image format. Supported formats: JPG, PNG, WEBP\",\"type\":\"string\"},\"success\":{\"example\":false,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Bad request - Invalid image format or corrupted file\"},\"413\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"example\":\"Image file size exceeds maximum allowed size\",\"type\":\"string\"},\"success\":{\"example\":false,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Payload too large - Image file size exceeds limit\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"example\":\"Failed to process image. Please try again.\",\"type\":\"string\"},\"success\":{\"example\":false,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Internal server error - Processing failed\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "POST"
           orig: "/api/remove-background"
           segments: [

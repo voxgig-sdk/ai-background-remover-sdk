@@ -1,12 +1,18 @@
 # AiBackgroundRemover SDK feature factory
 
 from aibackgroundremover_sdk.feature.base_feature import AiBackgroundRemoverBaseFeature
+from aibackgroundremover_sdk.feature.ratelimit_feature import AiBackgroundRemoverRatelimitFeature
+from aibackgroundremover_sdk.feature.retry_feature import AiBackgroundRemoverRetryFeature
 from aibackgroundremover_sdk.feature.test_feature import AiBackgroundRemoverTestFeature
+from aibackgroundremover_sdk.feature.timeout_feature import AiBackgroundRemoverTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: AiBackgroundRemoverBaseFeature(),
+    "ratelimit": lambda: AiBackgroundRemoverRatelimitFeature(),
+    "retry": lambda: AiBackgroundRemoverRetryFeature(),
     "test": lambda: AiBackgroundRemoverTestFeature(),
+    "timeout": lambda: AiBackgroundRemoverTimeoutFeature(),
 }
 
 
