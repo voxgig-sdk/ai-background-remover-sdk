@@ -414,6 +414,7 @@ Use `Helpers.to_map()` to safely validate that a value is a hash.
 rb/
 ├── AiBackgroundRemover_sdk.rb       -- Main SDK module
 ├── config.rb                  -- Configuration
+├── schema.rb                  -- Generated option + entity specs
 ├── features.rb                -- Feature factory
 ├── core/                      -- Core types and context
 ├── entity/                    -- Entity implementations

@@ -127,9 +127,9 @@ class Config {
 
     entity: {
       
-      background_removal: {
-      },
-
+        background_removal: {
+        },
+  
     }
   }
 

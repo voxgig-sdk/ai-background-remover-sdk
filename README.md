@@ -109,12 +109,12 @@ local result, err = client:BackgroundRemoval():create({ format = "example", imag
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/ai-background-remover-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ai-background-remover-sdk/releases) |
-| Python | `voxgig-sdk-ai-background-remover` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ai-background-remover-sdk/releases) |
-| PHP | `voxgig-sdk/ai-background-remover` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ai-background-remover-sdk/releases) |
+| TypeScript | `@voxgig-sdk/ai-background-remover-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ai-background-remover-sdk/tags) |
+| Python | `voxgig-sdk-ai-background-remover` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ai-background-remover-sdk/tags) |
+| PHP | `voxgig-sdk/ai-background-remover` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ai-background-remover-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/ai-background-remover-sdk/go` | `go get github.com/voxgig-sdk/ai-background-remover-sdk/go@latest` |
-| Ruby | `voxgig-sdk-ai-background-remover` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ai-background-remover-sdk/releases) |
-| Lua | `voxgig-sdk-ai-background-remover` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ai-background-remover-sdk/releases) |
+| Ruby | `voxgig-sdk-ai-background-remover` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ai-background-remover-sdk/tags) |
+| Lua | `voxgig-sdk-ai-background-remover` | publish pending — [install from git tag](https://github.com/voxgig-sdk/ai-background-remover-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/ai-background-remover-sdk/go-cli` | `go install github.com/voxgig-sdk/ai-background-remover-sdk/go-cli/cmd/ai-background-remover@latest` |
 | Go MCP server | `github.com/voxgig-sdk/ai-background-remover-sdk/go-mcp` | `go get github.com/voxgig-sdk/ai-background-remover-sdk/go-mcp@latest` |
 
