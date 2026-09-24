@@ -91,20 +91,24 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "format",
+						"title": "Format",
 						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "uri",
 						"name": "imageUrl",
-						"short": "URL to download the processed image",
+						"title": "Image Url",
 						"type": "`$STRING`",
+						"short": "URL to download the processed image",
+						"format": "uri",
 					},
 					map[string]any{
 						"name": "message",
+						"title": "Message",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "success",
+						"title": "Success",
 						"type": "`$BOOLEAN`",
 					},
 				},
@@ -115,7 +119,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/api/remove-background",
@@ -127,15 +130,17 @@ func MakeConfig() map[string]any {
 										"lit": "remove-background",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"api",
 									"remove-background",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},

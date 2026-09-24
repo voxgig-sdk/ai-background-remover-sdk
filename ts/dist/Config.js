@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -114,20 +107,24 @@ class Config {
             "fields": [
                 {
                     "name": "format",
+                    "title": "Format",
                     "type": "`$STRING`"
                 },
                 {
-                    "format": "uri",
                     "name": "imageUrl",
+                    "title": "Image Url",
+                    "type": "`$STRING`",
                     "short": "URL to download the processed image",
-                    "type": "`$STRING`"
+                    "format": "uri"
                 },
                 {
                     "name": "message",
+                    "title": "Message",
                     "type": "`$STRING`"
                 },
                 {
                     "name": "success",
+                    "title": "Success",
                     "type": "`$BOOLEAN`"
                 }
             ],
@@ -138,7 +135,6 @@ class Config {
                     "name": "create",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "POST",
                             "orig": "/api/remove-background",
@@ -150,15 +146,17 @@ class Config {
                                     "lit": "remove-background"
                                 }
                             ],
-                            "select": {},
+                            "parts": [
+                                "api",
+                                "remove-background"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "api",
-                                "remove-background"
-                            ]
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 }

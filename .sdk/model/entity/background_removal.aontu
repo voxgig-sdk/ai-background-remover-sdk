@@ -1,0 +1,68 @@
+# Entity: background_removal
+
+main: kit: entity: background_removal: {
+
+  alias: field: {}
+
+  fields: {
+    format: {
+      h: "Format"
+      n: "format"
+      r: false
+      t: "`$STRING`"
+    }
+    imageUrl: {
+      fo: "uri"
+      h: "Image Url"
+      n: "imageUrl"
+      r: false
+      sh: "URL to download the processed image"
+      t: "`$STRING`"
+    }
+    message: {
+      h: "Message"
+      n: "message"
+      r: false
+      t: "`$STRING`"
+    }
+    success: {
+      h: "Success"
+      n: "success"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  name: "background_removal"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/remove-background"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/remove-background"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "remove-background"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

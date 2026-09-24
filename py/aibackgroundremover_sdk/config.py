@@ -116,20 +116,24 @@ def make_config():
         "fields": [
           {
             "name": "format",
+            "title": "Format",
             "type": "`$STRING`",
           },
           {
-            "format": "uri",
             "name": "imageUrl",
-            "short": "URL to download the processed image",
+            "title": "Image Url",
             "type": "`$STRING`",
+            "short": "URL to download the processed image",
+            "format": "uri",
           },
           {
             "name": "message",
+            "title": "Message",
             "type": "`$STRING`",
           },
           {
             "name": "success",
+            "title": "Success",
             "type": "`$BOOLEAN`",
           },
         ],
@@ -140,7 +144,6 @@ def make_config():
             "name": "create",
             "points": [
               {
-                "args": {},
                 "kind": "http",
                 "method": "POST",
                 "orig": "/api/remove-background",
@@ -152,15 +155,17 @@ def make_config():
                     "lit": "remove-background",
                   },
                 ],
-                "select": {},
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
                 "parts": [
                   "api",
                   "remove-background",
                 ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {},
+                "select": {},
               },
             ],
           },

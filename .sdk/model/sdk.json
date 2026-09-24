@@ -24,40 +24,110 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "background_removal": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "format",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "format": {
+              "a": true,
+              "h": "Format",
+              "n": "format",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "uri",
-              "name": "imageUrl",
-              "req": false,
-              "short": "URL to download the processed image",
-              "type": "`$STRING`"
+            "imageUrl": {
+              "a": true,
+              "fo": "uri",
+              "h": "Image Url",
+              "n": "imageUrl",
+              "r": false,
+              "sh": "URL to download the processed image",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "message",
-              "req": false,
-              "type": "`$STRING`"
+            "message": {
+              "a": true,
+              "h": "Message",
+              "n": "message",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "success",
-              "req": false,
-              "type": "`$BOOLEAN`"
+            "success": {
+              "a": true,
+              "h": "Success",
+              "n": "success",
+              "r": false,
+              "t": "`$BOOLEAN`"
             }
-          ],
+          },
           "name": "background_removal",
           "op": {
             "create": {
@@ -65,18 +135,19 @@
               "name": "create",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "POST /api/remove-background",
-                    "json": "{\"operationId\":\"removeBackground\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"multipart/form-data\":{\"schema\":{\"properties\":{\"image\":{\"description\":\"The image file to process. Supported formats: JPG, PNG, WEBP\",\"format\":\"binary\",\"type\":\"string\"}},\"required\":[\"image\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"format\":{\"example\":\"PNG\",\"type\":\"string\"},\"imageUrl\":{\"description\":\"URL to download the processed image\",\"example\":\"https://www.aibackgroundremover.site/outputs/abc123.png\",\"format\":\"uri\",\"type\":\"string\"},\"message\":{\"example\":\"Background removed successfully\",\"type\":\"string\"},\"success\":{\"example\":true,\"type\":\"boolean\"}},\"type\":\"object\"}},\"image/png\":{\"schema\":{\"description\":\"High-quality transparent PNG image with background removed\",\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successfully removed background from image\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"example\":\"Invalid image format. Supported formats: JPG, PNG, WEBP\",\"type\":\"string\"},\"success\":{\"example\":false,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Bad request - Invalid image format or corrupted file\"},\"413\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"example\":\"Image file size exceeds maximum allowed size\",\"type\":\"string\"},\"success\":{\"example\":false,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Payload too large - Image file size exceeds limit\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"example\":\"Failed to process image. Please try again.\",\"type\":\"string\"},\"success\":{\"example\":false,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Internal server error - Processing failed\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "POST",
-                  "orig": "/api/remove-background",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/api/remove-background",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -84,8 +155,7 @@
                       "lit": "remove-background"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -514,15 +584,15 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "background_removal_ref01"
               },
-              "match": {},
-              "op": "create",
-              "spec": [],
-              "valid": []
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
             }
           ]
         }
