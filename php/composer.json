@@ -1,5 +1,5 @@
 {
-  "name": "voxgig-sdk/ai-background-remover",
+  "name": "voxgig-sdk/ai-background-remover-sdk",
   "description": "Unofficial generated PHP SDK for the AI Background Remover public API. Not affiliated with or endorsed by the upstream API provider.",
   "type": "library",
   "keywords": ["voxgig", "sdk", "generated-sdk", "openapi", "api-client", "ai-background-remover"],

@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "voxgig-sdk-ai-background-remover"
+name = "voxgig-sdk-ai-background-remover-sdk"
 version = "0.0.1"
 description = "Unofficial generated Python SDK for the AI Background Remover public API. Not affiliated with or endorsed by the upstream API provider."
 readme = "README.md"
