@@ -12,9 +12,18 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `c
 
 ## Install
 This package is not yet published to RubyGems. Install it from the
-GitHub release tag (`rb/vX.Y.Z`):
+GitHub release tag (`rb/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/ai-background-remover-sdk/releases)), or
+from a clone:
 
-- Releases: [https://github.com/voxgig-sdk/ai-background-remover-sdk/releases](https://github.com/voxgig-sdk/ai-background-remover-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/ai-background-remover-sdk
+```
+
+Then add it to your `Gemfile` by path, and run `bundle install`:
+
+```ruby
+gem "voxgig-sdk-ai-background-remover-sdk", path: "./ai-background-remover-sdk/rb"
+```
 
 
 ## Tutorial: your first API call

@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 AiBackgroundRemoverUtility.registrar = ->(u) {
   u.clean = AiBackgroundRemoverUtilities::Clean
+  u.clean_add = AiBackgroundRemoverUtilities::CleanAdd
+  u.clean_explain = AiBackgroundRemoverUtilities::CleanExplain
   u.done = AiBackgroundRemoverUtilities::Done
   u.make_error = AiBackgroundRemoverUtilities::MakeError
   u.feature_add = AiBackgroundRemoverUtilities::FeatureAdd

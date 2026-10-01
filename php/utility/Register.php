@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 AiBackgroundRemoverUtility::setRegistrar(function (AiBackgroundRemoverUtility $u): void {
     $u->clean = [AiBackgroundRemoverClean::class, 'call'];
+    $u->clean_add = [AiBackgroundRemoverClean::class, 'add'];
+    $u->clean_explain = [AiBackgroundRemoverDone::class, 'clean_explain'];
     $u->done = [AiBackgroundRemoverDone::class, 'call'];
     $u->make_error = [AiBackgroundRemoverMakeError::class, 'call'];
     $u->feature_add = [AiBackgroundRemoverFeatureAdd::class, 'call'];
