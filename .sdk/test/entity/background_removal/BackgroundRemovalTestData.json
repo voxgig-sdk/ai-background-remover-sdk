@@ -2,24 +2,27 @@
   "existing": {
     "background_removal": {
       "BACKGROUND_REMOVAL00": {
-        "format": "s28",
-        "imageUrl": "s29",
-        "message": "s2a",
-        "success": false,
+        "format": "s32",
+        "image": "s33",
+        "imageUrl": "s34",
+        "message": "s35",
+        "success": true,
         "id": "BACKGROUND_REMOVAL00"
       },
       "BACKGROUND_REMOVAL01": {
-        "format": "s50",
-        "imageUrl": "s51",
-        "message": "s52",
-        "success": false,
+        "format": "s64",
+        "image": "s65",
+        "imageUrl": "s66",
+        "message": "s67",
+        "success": true,
         "id": "BACKGROUND_REMOVAL01"
       },
       "BACKGROUND_REMOVAL02": {
-        "format": "s78",
-        "imageUrl": "s79",
-        "message": "s7a",
-        "success": false,
+        "format": "s96",
+        "image": "s97",
+        "imageUrl": "s98",
+        "message": "s99",
+        "success": true,
         "id": "BACKGROUND_REMOVAL02"
       }
     }
@@ -27,10 +30,11 @@
   "new": {
     "background_removal": {
       "background_removal_ref01": {
-        "format": "sa0",
-        "imageUrl": "sa1",
-        "message": "sa2",
-        "success": false
+        "format": "sc8",
+        "image": "sc9",
+        "imageUrl": "sca",
+        "message": "scb",
+        "success": true
       }
     }
   },

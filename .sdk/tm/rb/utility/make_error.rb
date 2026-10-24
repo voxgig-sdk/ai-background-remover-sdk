@@ -54,6 +54,7 @@ module AiBackgroundRemoverUtilities
     # rbac short-circuit). Fires after ctx.ctrl.err is set so hooks can read the
     # error; features guard against double-recording when PreDone already fired.
     if ctx.utility && ctx.utility.feature_hook
+      ctx.unexpected_fired = true
       ctx.utility.feature_hook.call(ctx, "PreUnexpected")
     end
 

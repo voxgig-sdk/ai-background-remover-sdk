@@ -20,6 +20,7 @@ SDK operations: `create`.
 
 Key fields to recognise:
 
+- `image`: The image file to process.
 - `imageUrl`: URL to download the processed image
 
 ### Route map

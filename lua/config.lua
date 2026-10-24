@@ -67,6 +67,7 @@ local function make_config()
         },
         ["optspec"] = {
           ["clearTimer"] = "`$FUNCTION`",
+          ["now"] = "`$FUNCTION`",
           ["setTimer"] = "`$FUNCTION`",
         },
         ["strict"] = false,
@@ -89,6 +90,14 @@ local function make_config()
             ["name"] = "format",
             ["title"] = "Format",
             ["type"] = "`$STRING`",
+          },
+          {
+            ["name"] = "image",
+            ["title"] = "Image",
+            ["type"] = "`$STRING`",
+            ["req"] = true,
+            ["short"] = "The image file to process.",
+            ["format"] = "binary",
           },
           {
             ["name"] = "imageUrl",
@@ -137,6 +146,27 @@ local function make_config()
                 },
                 ["args"] = {},
                 ["select"] = {},
+                ["body"] = {
+                  ["fields"] = {
+                    {
+                      ["binary"] = true,
+                      ["name"] = "image",
+                    },
+                  },
+                  ["kind"] = "multipart",
+                  ["media"] = "multipart/form-data",
+                },
+                ["response"] = {
+                  ["alternatives"] = {
+                    {
+                      ["binary"] = true,
+                      ["kind"] = "raw",
+                      ["media"] = "image/png",
+                    },
+                  },
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
+                },
               },
             },
           },

@@ -11,6 +11,14 @@ main: kit: entity: background_removal: {
       r: false
       t: "`$STRING`"
     }
+    image: {
+      fo: "binary"
+      h: "Image"
+      n: "image"
+      r: true
+      sh: "The image file to process."
+      t: "`$STRING`"
+    }
     imageUrl: {
       fo: "uri"
       h: "Image Url"
@@ -46,6 +54,27 @@ main: kit: entity: background_removal: {
           }
           m: "POST"
           o: "/api/remove-background"
+          rb: {
+            fields: [
+              {
+                binary: true
+                name: "image"
+              }
+            ]
+            kind: "multipart"
+            media: "multipart/form-data"
+          }
+          rs: {
+            alternatives: [
+              {
+                binary: true
+                kind: "raw"
+                media: "image/png"
+              }
+            ]
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"

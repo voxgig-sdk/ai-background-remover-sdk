@@ -57,6 +57,7 @@ declare class Config {
             };
             optspec: {
                 clearTimer: string;
+                now: string;
                 setTimer: string;
             };
             strict: boolean;
@@ -78,14 +79,23 @@ declare class Config {
                 name: string;
                 title: string;
                 type: string;
+                req?: undefined;
                 short?: undefined;
                 format?: undefined;
             } | {
                 name: string;
                 title: string;
                 type: string;
+                req: boolean;
                 short: string;
                 format: string;
+            } | {
+                name: string;
+                title: string;
+                type: string;
+                short: string;
+                format: string;
+                req?: undefined;
             })[];
             name: string;
             op: {
@@ -107,6 +117,23 @@ declare class Config {
                         };
                         args: {};
                         select: {};
+                        body: {
+                            fields: {
+                                binary: boolean;
+                                name: string;
+                            }[];
+                            kind: string;
+                            media: string;
+                        };
+                        response: {
+                            alternatives: {
+                                binary: boolean;
+                                kind: string;
+                                media: string;
+                            }[];
+                            kind: string;
+                            media: string;
+                        };
                     }[];
                 };
             };

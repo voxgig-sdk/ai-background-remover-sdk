@@ -21,7 +21,7 @@ module AiBackgroundRemoverFeatureHarness
 
   def self.default_method(opname)
     return "POST" if opname == "create"
-    return "PATCH" if opname == "update"
+    return "PATCH" if opname == "update" || opname == "patch"
     return "DELETE" if opname == "remove"
     "GET"
   end

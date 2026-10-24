@@ -19,6 +19,7 @@ type BackgroundRemoval struct {
 // BackgroundRemovalCreateData is the typed request payload for BackgroundRemoval.CreateTyped.
 type BackgroundRemovalCreateData struct {
 	Format *string `json:"format,omitempty"`
+	Image string `json:"image"`
 	ImageUrl *string `json:"imageUrl,omitempty"`
 	Message *string `json:"message,omitempty"`
 	Success *bool `json:"success,omitempty"`

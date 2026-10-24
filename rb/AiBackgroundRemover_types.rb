@@ -13,6 +13,9 @@
 # @!attribute [rw] format
 #   @return [String, nil]
 #
+# @!attribute [rw] image
+#   @return [String]
+#
 # @!attribute [rw] imageUrl
 #   @return [String, nil]
 #
@@ -23,6 +26,7 @@
 #   @return [Boolean, nil]
 BackgroundRemoval = Struct.new(
   :format,
+  :image,
   :imageUrl,
   :message,
   :success,
@@ -34,6 +38,9 @@ BackgroundRemoval = Struct.new(
 # @!attribute [rw] format
 #   @return [String, nil]
 #
+# @!attribute [rw] image
+#   @return [String]
+#
 # @!attribute [rw] imageUrl
 #   @return [String, nil]
 #
@@ -44,6 +51,7 @@ BackgroundRemoval = Struct.new(
 #   @return [Boolean, nil]
 BackgroundRemovalCreateData = Struct.new(
   :format,
+  :image,
   :imageUrl,
   :message,
   :success,

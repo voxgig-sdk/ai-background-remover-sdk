@@ -94,6 +94,7 @@ background_removal = client.BackgroundRemoval
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `format` | `String` | No |  |
+| `image` | `String` | Yes | The image file to process. |
 | `imageUrl` | `String` | No | URL to download the processed image |
 | `message` | `String` | No |  |
 | `success` | `Boolean` | No |  |
@@ -102,12 +103,15 @@ background_removal = client.BackgroundRemoval
 
 #### `create(reqdata, ctrl = nil) -> result`
 
-Create a new entity with the given data. Raises on error.
+Create a new entity with the given data. Returns the created entity and raises on error.
 
 ```ruby
 result = client.BackgroundRemoval.create({
+  "image" => "example_image", # String
 })
 ```
+
+Declares a `multipart/form-data` body, which this SDK does not encode yet: it sends the data as JSON.
 
 ### Common Methods
 
@@ -296,6 +300,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

@@ -3,5 +3,14 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Production server",
+      "Successfully removed background from image",
+      "The image file to process.",
+      "This API allows users to instantly remove backgrounds from images using advanced AI technology. The tool is designed to be secure, fast, and user-friendly, providing high-quality results without the need for user sign-up. Users can upload their images and get transparent background outputs quickly.",
+      "URL to download the processed image"
+    ]
+  }
 }

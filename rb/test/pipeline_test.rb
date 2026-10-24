@@ -268,13 +268,13 @@ class PipelineTest < Minitest::Test
     }, nil)
     ctx.spec = spec_of
     ctx.result = AiBackgroundRemoverResult.new({
-      "ok" => true, "resdata" => [{ "a" => 1 }, { "a" => 2 }],
+      "ok" => true, "resdata" => [{ "a" => 1 }, "b.md"],
     })
     result, err = @utility.make_result.call(ctx)
     assert_nil err
     assert_equal 2, result.resdata.length
     assert_equal 2, made.length
-    assert_equal [{ "a" => 1 }, { "a" => 2 }], made
+    assert_equal [{ "a" => 1 }, "b.md"], made
   end
 
   def test_make_result_empty_list_yields_an_empty_resdata_array

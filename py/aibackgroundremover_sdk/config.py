@@ -96,6 +96,7 @@ def make_config():
         },
         "optspec": {
           "clearTimer": "`$FUNCTION`",
+          "now": "`$FUNCTION`",
           "setTimer": "`$FUNCTION`",
         },
         "strict": False,
@@ -118,6 +119,14 @@ def make_config():
             "name": "format",
             "title": "Format",
             "type": "`$STRING`",
+          },
+          {
+            "name": "image",
+            "title": "Image",
+            "type": "`$STRING`",
+            "req": True,
+            "short": "The image file to process.",
+            "format": "binary",
           },
           {
             "name": "imageUrl",
@@ -166,6 +175,27 @@ def make_config():
                 },
                 "args": {},
                 "select": {},
+                "body": {
+                  "fields": [
+                    {
+                      "binary": True,
+                      "name": "image",
+                    },
+                  ],
+                  "kind": "multipart",
+                  "media": "multipart/form-data",
+                },
+                "response": {
+                  "alternatives": [
+                    {
+                      "binary": True,
+                      "kind": "raw",
+                      "media": "image/png",
+                    },
+                  ],
+                  "kind": "json",
+                  "media": "application/json",
+                },
               },
             ],
           },

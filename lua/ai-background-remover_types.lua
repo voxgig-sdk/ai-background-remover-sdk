@@ -8,12 +8,14 @@
 
 ---@class BackgroundRemoval
 ---@field format? string
+---@field image string
 ---@field imageUrl? string
 ---@field message? string
 ---@field success? boolean
 
 ---@class BackgroundRemovalCreateData
 ---@field format? string
+---@field image string
 ---@field imageUrl? string
 ---@field message? string
 ---@field success? boolean

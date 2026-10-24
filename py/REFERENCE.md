@@ -88,20 +88,24 @@ background_removal = client.BackgroundRemoval()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `format` | `str` | No |  |
+| `image` | `str` | Yes | The image file to process. |
 | `imageUrl` | `str` | No | URL to download the processed image |
 | `message` | `str` | No |  |
 | `success` | `bool` | No |  |
 
 ### Operations
 
-#### `create(reqdata, ctrl=None) -> dict`
+#### `create(reqdata, ctrl=None) -> BackgroundRemovalEntity`
 
-Create a new entity with the given data. Returns the created entity data and raises on error.
+Create a new entity with the given data. Returns the created entity and raises on error.
 
 ```python
 result = client.BackgroundRemoval().create({
+    "image": "example_image",  # str
 })
 ```
+
+Declares a `multipart/form-data` body, which this SDK does not encode yet: it sends the data as JSON.
 
 ### Common Methods
 
@@ -289,6 +293,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

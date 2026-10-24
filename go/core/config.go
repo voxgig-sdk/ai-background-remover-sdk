@@ -71,6 +71,7 @@ func MakeConfig() map[string]any {
 				},
 				"optspec": map[string]any{
 					"clearTimer": "`$FUNCTION`",
+					"now": "`$FUNCTION`",
 					"setTimer": "`$FUNCTION`",
 				},
 				"strict": false,
@@ -93,6 +94,14 @@ func MakeConfig() map[string]any {
 						"name": "format",
 						"title": "Format",
 						"type": "`$STRING`",
+					},
+					map[string]any{
+						"name": "image",
+						"title": "Image",
+						"type": "`$STRING`",
+						"req": true,
+						"short": "The image file to process.",
+						"format": "binary",
 					},
 					map[string]any{
 						"name": "imageUrl",
@@ -141,6 +150,27 @@ func MakeConfig() map[string]any {
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
+								"body": map[string]any{
+									"fields": []any{
+										map[string]any{
+											"binary": true,
+											"name": "image",
+										},
+									},
+									"kind": "multipart",
+									"media": "multipart/form-data",
+								},
+								"response": map[string]any{
+									"alternatives": []any{
+										map[string]any{
+											"binary": true,
+											"kind": "raw",
+											"media": "image/png",
+										},
+									},
+									"kind": "json",
+									"media": "application/json",
+								},
 							},
 						},
 					},

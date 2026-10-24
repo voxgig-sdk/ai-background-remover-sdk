@@ -99,6 +99,7 @@ fmt.Println(backgroundRemoval.GetName()) // "background_removal"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `format` | `string` | No |  |
+| `image` | `string` | Yes | The image file to process. |
 | `imageUrl` | `string` | No | URL to download the processed image |
 | `message` | `string` | No |  |
 | `success` | `bool` | No |  |
@@ -107,16 +108,19 @@ fmt.Println(backgroundRemoval.GetName()) // "background_removal"
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Returns the created entity; `err` is non-nil on failure.
 
 ```go
 result, err := client.BackgroundRemoval(nil).Create(map[string]any{
+    "image": "example_image",
 }, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(result)
+fmt.Println(result.(sdk.Entity).Data())
 ```
+
+Declares a `multipart/form-data` body, which this SDK does not encode yet: it sends the data as JSON.
 
 ### Common Methods
 
@@ -134,6 +138,14 @@ Get or set the entity match criteria. Works the same as `Data()`.
 
 Create a new `BackgroundRemovalEntity` instance with the same client and
 options.
+
+#### `Stream(action string, args map[string]any, callopts map[string]any) <-chan StreamItem`
+
+Run an operation through the pipeline and send its result items on the
+returned channel, which closes when the stream ends. A `StreamItem` holds
+one item in `Item`, or in `Err` the error that ended the stream: the
+error the operation itself would return, sent as the last value. Under
+`throw: false` in `callopts["ctrl"]`, no error is sent.
 
 #### `GetName() string`
 
@@ -299,6 +311,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

@@ -15,7 +15,7 @@ keeps the cognitive load low.
 
 ## Install
 This package is not yet published to PyPI. Install it from the GitHub
-release tag (`py/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/ai-background-remover-sdk/releases)) or
+release tag (`py/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/ai-background-remover-sdk/tags)) or
 from a source checkout:
 
 ```bash
@@ -40,7 +40,7 @@ client = AiBackgroundRemoverSDK()
 
 ```python
 # Create — returns the ENTITY (call data_get() for the record)
-created = client.BackgroundRemoval().create({"format": "example_format", "imageUrl": "example_imageUrl"})
+created = client.BackgroundRemoval().create({"image": "example_image"})
 
 ```
 
@@ -51,8 +51,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    backgroundremoval = client.BackgroundRemoval().create({ "format": "example", "imageUrl": "example", "message": "example" })
-    print(backgroundremoval)
+    backgroundremoval = client.BackgroundRemoval().create({ "image": "example" })
+    print(backgroundremoval.data_get())
 except Exception as err:
     print(f"create failed: {err}")
 ```
@@ -118,10 +118,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = AiBackgroundRemoverSDK.test()
 
-# Entity ops return the ENTITY and raises on error;
-# call data_get() for the record.
-backgroundremoval = client.BackgroundRemoval().create({"format": "example", "imageUrl": "example", "message": "example"})
-# backgroundremoval contains the mock response record
+# Entity ops return the entity, and list one per record; they raise on error.
+backgroundremoval = client.BackgroundRemoval().create({"image": "example"})
+# data_get() on an entity reads its mock response record
 ```
 
 ### Use a custom fetch function
@@ -205,7 +204,7 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
+| `create` | `(reqdata, ctrl) -> any` | Create a new entity, and return it. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -215,9 +214,9 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
-ops, a `list` for `list`) and raise on error. Wrap calls in
-`try`/`except` to handle failures.
+Entity operations return the entity, and `list` a `list` of entities, one
+per record; an entity's `data_get()` reads its record (a `dict`). They raise
+on error, so wrap calls in `try`/`except` to handle failures.
 
 The `direct()` escape hatch never raises — it returns a result `dict`
 you branch on via `result["ok"]`:
@@ -238,6 +237,7 @@ On error, `ok` is `False` and `err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `format` |  |
+| `image` | The image file to process. |
 | `imageUrl` | URL to download the processed image |
 | `message` |  |
 | `success` |  |
@@ -266,6 +266,7 @@ Create an instance: `background_removal = client.BackgroundRemoval()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `format` | `str` |  |
+| `image` | `str` | The image file to process. |
 | `imageUrl` | `str` | URL to download the processed image |
 | `message` | `str` |  |
 | `success` | `bool` |  |
@@ -274,6 +275,7 @@ Create an instance: `background_removal = client.BackgroundRemoval()`
 
 ```python
 background_removal = client.BackgroundRemoval().create({
+    "image": "example_image",  # str
 })
 ```
 
@@ -439,7 +441,7 @@ stores the returned data and match criteria internally.
 
 ```python
 backgroundremoval = client.BackgroundRemoval()
-backgroundremoval.create({ "format": "example", "imageUrl": "example", "message": "example" })
+backgroundremoval.create({ "image": "example" })
 
 # backgroundremoval.data_get() now returns the backgroundremoval data from the last create
 # backgroundremoval.match_get() returns the last match criteria

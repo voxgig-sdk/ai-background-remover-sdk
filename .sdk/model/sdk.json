@@ -104,6 +104,15 @@
               "r": false,
               "t": "`$STRING`"
             },
+            "image": {
+              "a": true,
+              "fo": "binary",
+              "h": "Image",
+              "n": "image",
+              "r": true,
+              "sh": "The image file to process.",
+              "t": "`$STRING`"
+            },
             "imageUrl": {
               "a": true,
               "fo": "uri",
@@ -147,6 +156,27 @@
                   "o": "/api/remove-background",
                   "q": {},
                   "r": {},
+                  "rb": {
+                    "fields": [
+                      {
+                        "binary": true,
+                        "name": "image"
+                      }
+                    ],
+                    "kind": "multipart",
+                    "media": "multipart/form-data"
+                  },
+                  "rs": {
+                    "alternatives": [
+                      {
+                        "binary": true,
+                        "kind": "raw",
+                        "media": "image/png"
+                      }
+                    ],
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "api"
@@ -490,6 +520,7 @@
             },
             "optspec": {
               "clearTimer": "`$FUNCTION`",
+              "now": "`$FUNCTION`",
               "setTimer": "`$FUNCTION`"
             },
             "strict": false
@@ -624,7 +655,7 @@
       "optspec": {
         "allow": {
           "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
-          "op": "create,update,load,list,remove,command,direct,graphql"
+          "op": "create,update,patch,load,list,remove,command,direct,graphql"
         },
         "apikey": "",
         "auth": {
@@ -677,6 +708,11 @@
         "top": {
           "active": true
         }
+      },
+      "publisher": {
+        "name": "",
+        "security": "",
+        "url": ""
       },
       "repo": {
         "host": "github.com",
@@ -907,7 +943,10 @@
             "version": "0.0.1"
           },
           "superseded": [],
-          "title": "Go MCP server"
+          "title": "Go MCP server",
+          "tool": {
+            "write": false
+          }
         },
         "lua": {
           "active": true,
@@ -1284,6 +1323,17 @@
           "base": "",
           "strict": true
         }
+      },
+      "text": {
+        "about_md": "",
+        "docs_url": "",
+        "entity_desc": {},
+        "homepage": "",
+        "meta_source": "",
+        "summary": "",
+        "tagline": "",
+        "title": "",
+        "website": ""
       }
     }
   },

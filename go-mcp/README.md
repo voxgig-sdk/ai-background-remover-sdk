@@ -1,10 +1,14 @@
 # ai-background-remover-mcp
 
 [MCP](https://modelcontextprotocol.io) server exposing the AiBackgroundRemover SDK as
-two agent tools — `ai-background-remover_list` and `ai-background-remover_load` — built on the
+no agent tools, as no entity has an operation a plain call runs, built on the
 [official Go MCP SDK](https://github.com/modelcontextprotocol/go-sdk) and the
 sibling Go SDK at `../go`. Runs over **stdio** (default, for spawnable installs)
 or **streamable HTTP** (one shared server for several agents).
+
+The server only reads. Create, update, patch and remove become tools too when the
+SDK's own model sets `main: kit: target: 'go-mcp': tool: write: true`; they are off by default, as an agent calling
+them changes the API's data.
 
 ## Examples
 
@@ -21,17 +25,6 @@ claude mcp add --scope user ai-background-remover \
 
 # 3b. …or run a shared HTTP server instead
 ./ai-background-remover-mcp -transport http -addr :8080
-```
-
-Tool-call arguments (what an agent sends):
-
-```jsonc
-// ai-background-remover_list: first page of records
-{ "entity": "background_removal" }
-{ "entity": "background_removal", "query": { } }
-
-// ai-background-remover_load: one record by id
-{ "entity": "background_removal", "query": { "id": 1 } }
 ```
 
 > The rest of this guide follows the [Diátaxis](https://diataxis.fr) framework:
@@ -59,9 +52,8 @@ Tool-call arguments (what an agent sends):
      -- "$PWD"/dist/*/ai-background-remover-mcp -transport stdio
    ```
 
-4. **Restart Claude Code.** The `ai-background-remover_list` and `ai-background-remover_load` tools now appear
-   in new sessions. Ask the agent to *"list background_removal using ai-background-remover"*
-   and it calls `ai-background-remover_list` with `{"entity":"background_removal"}`.
+4. **Restart Claude Code.** The server registers no tools for this SDK, so
+   none appear.
 
 ## How-to guides
 
@@ -86,22 +78,13 @@ environment) so every tool call is authenticated.
 Streamable HTTP lets several agents share one running process; stdio (the
 default) spawns a fresh process per client.
 
-### Call the `ai-background-remover_list` tool
 
-Args: `entity` (required), `query` (optional filter map). Returns the first
-page of records as JSON:
+### Turn on the write tools
 
-```jsonc
-{ "entity": "background_removal" }
+In the SDK's own model (`.sdk/model/sdk.aontu`), then regenerate:
+
 ```
-
-### Call the `ai-background-remover_load` tool
-
-Args: `entity` (required), `query` = `{"id":N}` (required). Returns the single
-record as JSON:
-
-```jsonc
-{ "entity": "background_removal", "query": { "id": 1 } }
+main: kit: target: 'go-mcp': tool: write: true
 ```
 
 ### Cross-compile release binaries
@@ -113,27 +96,7 @@ make build-all   # linux/darwin/windows x amd64/arm64, under dist/<os>-<arch>/
 
 ## Reference
 
-### Tools
-
-| Tool | Args | Returns |
-|------|------|---------|
-| `ai-background-remover_list` | `entity` (required), `query` (optional map) | First page of records as JSON |
-| `ai-background-remover_load` | `entity` (required), `query` = `{id:N}` | Single record as JSON |
-
-On error, a tool returns an MCP error result (`isError: true`) whose text is the
-failure message (e.g. unknown entity, or an API error).
-
-### `Args` schema
-
-Both tools take the same argument object:
-
-| Field | Type | Notes |
-|-------|------|-------|
-| `entity` | string | One of the 1 supported entities (see below). |
-| `query` | object | Optional match map. `{"id":N}` for load; omit or `{}` for list. |
-
-JSON schemas are emitted by the SDK from the `Args` struct's `json` /
-`jsonschema` tags — no schema is hand-written.
+The server registers no tools for this SDK.
 
 ### Transports & flags
 
@@ -149,41 +112,15 @@ JSON schemas are emitted by the SDK from the `Args` struct's `json` /
 | `AI_BACKGROUND_REMOVER_APIKEY` | API key sent with every request. |
 | `AI_BACKGROUND_REMOVER_BASE` | Optional override of the API base URL. |
 
-### Entities
-
-The 1 entity valid as the `entity` argument:
-
-background_removal
-
-### Smoke test via HTTP (raw JSON-RPC)
-
-```sh
-./ai-background-remover-mcp -transport http -addr :18080 &
-
-# initialize, grab the session id
-curl -sN -X POST http://localhost:18080 \
-  -H 'Content-Type: application/json' \
-  -H 'Accept: application/json, text/event-stream' \
-  -D headers \
-  -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"smoke","version":"0"}}}'
-
-SESSION=$(awk '/Mcp-Session-Id/ {print $2}' headers | tr -d '\r')
-
-curl -sN -X POST http://localhost:18080 \
-  -H 'Content-Type: application/json' \
-  -H 'Accept: application/json, text/event-stream' \
-  -H "Mcp-Session-Id: $SESSION" \
-  -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"ai-background-remover_load","arguments":{"entity":"background_removal","query":{"id":1}}}}'
-```
-
 ## Explanation
 
 ### How tools map to the SDK
 
 `main.go` builds the SDK client (configured from the environment) and registers
-two tools. Each dispatches on the `entity` argument to the matching entity in
-the sibling Go SDK at `../go`, calls `List` or `Load`, unwraps the `Entity`
-wrappers to plain data, and returns it as pretty-printed JSON.
+one tool per operation the SDK's entities have. Each dispatches on the
+`entity` argument to the matching entity in the sibling Go SDK at `../go`,
+calls its operation, unwraps the `Entity` wrappers to plain data, and returns
+it as pretty-printed JSON.
 
 ### Why two transports
 
@@ -193,9 +130,10 @@ that many agents can share — handy for a long-lived deployment.
 
 ### Schema generation
 
-The input schema is derived from the `Args` Go struct's `json` / `jsonschema`
-tags at registration time, so the advertised tool schema can never drift from
-the code that consumes it.
+The input schema is derived from each tool's argument struct's `json` /
+`jsonschema` tags at registration time, so the advertised tool schema can
+never drift from the code that consumes it. The `entity` enum comes from the
+same list the tool is registered for.
 
 ## Generated by
 

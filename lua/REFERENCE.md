@@ -91,6 +91,7 @@ local background_removal = client:BackgroundRemoval(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `format` | `string` | No |  |
+| `image` | `string` | Yes | The image file to process. |
 | `imageUrl` | `string` | No | URL to download the processed image |
 | `message` | `string` | No |  |
 | `success` | `boolean` | No |  |
@@ -99,12 +100,15 @@ local background_removal = client:BackgroundRemoval(nil)
 
 #### `create(reqdata, ctrl) -> any, err`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:BackgroundRemoval():create({
+  image = --[[ string ]],
 })
 ```
+
+Declares a `multipart/form-data` body, which this SDK does not encode yet: it sends the data as JSON.
 
 ### Common Methods
 
@@ -293,6 +297,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

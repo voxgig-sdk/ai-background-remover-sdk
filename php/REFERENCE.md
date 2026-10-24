@@ -93,6 +93,7 @@ $background_removal = $client->BackgroundRemoval();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `format` | `string` | No |  |
+| `image` | `string` | Yes | The image file to process. |
 | `imageUrl` | `string` | No | URL to download the processed image |
 | `message` | `string` | No |  |
 | `success` | `bool` | No |  |
@@ -101,12 +102,15 @@ $background_removal = $client->BackgroundRemoval();
 
 #### `create(array $reqdata, ?array $ctrl = null): mixed`
 
-Create a new entity with the given data. Throws on error.
+Create a new entity with the given data. Returns the created entity and throws on error.
 
 ```php
 $result = $client->BackgroundRemoval()->create([
+  "image" => null, // string
 ]);
 ```
+
+Declares a `multipart/form-data` body, which this SDK does not encode yet: it sends the data as JSON.
 
 ### Common Methods
 
@@ -295,6 +299,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

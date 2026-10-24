@@ -16,14 +16,22 @@ from __future__ import annotations
 from typing import TypedDict, Any
 
 
-class BackgroundRemoval(TypedDict, total=False):
+class BackgroundRemovalRequired(TypedDict):
+    image: str
+
+
+class BackgroundRemoval(BackgroundRemovalRequired, total=False):
     format: str
     imageUrl: str
     message: str
     success: bool
 
 
-class BackgroundRemovalCreateData(TypedDict, total=False):
+class BackgroundRemovalCreateDataRequired(TypedDict):
+    image: str
+
+
+class BackgroundRemovalCreateData(BackgroundRemovalCreateDataRequired, total=False):
     format: str
     imageUrl: str
     message: str

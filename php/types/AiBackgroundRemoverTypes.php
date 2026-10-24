@@ -16,6 +16,7 @@ declare(strict_types=1);
 class BackgroundRemoval
 {
     public ?string $format = null;
+    public string $image;
     public ?string $imageUrl = null;
     public ?string $message = null;
     public ?bool $success = null;
@@ -25,6 +26,7 @@ class BackgroundRemoval
 class BackgroundRemovalCreateData
 {
     public ?string $format = null;
+    public string $image;
     public ?string $imageUrl = null;
     public ?string $message = null;
     public ?bool $success = null;

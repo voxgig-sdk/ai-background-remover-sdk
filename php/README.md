@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `$
 
 ## Install
 This package is not yet published to Packagist. Install it from the
-GitHub release tag (`php/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/ai-background-remover-sdk/releases)), or
+GitHub release tag (`php/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/ai-background-remover-sdk/tags)), or
 from a clone as a Composer path repository:
 
 ```bash
@@ -40,7 +40,7 @@ $client = new AiBackgroundRemoverSDK();
 
 ```php
 // create() returns the ENTITY — call data_get() for the created BackgroundRemoval record.
-$created = $client->BackgroundRemoval()->create(["format" => "example_format", "imageUrl" => "example_imageUrl"]);
+$created = $client->BackgroundRemoval()->create(["image" => "example_image"]);
 
 ```
 
@@ -52,7 +52,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $backgroundremoval = $client->BackgroundRemoval()->create(["format" => "example", "imageUrl" => "example", "message" => "example"]);
+    $backgroundremoval = $client->BackgroundRemoval()->create(["image" => "example"]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -126,7 +126,7 @@ $client = AiBackgroundRemoverSDK::test();
 
 // Entity ops return the ENTITY (throws on error);
 // call data_get() for the mock record.
-$backgroundremoval = $client->BackgroundRemoval()->create(["format" => "example", "imageUrl" => "example", "message" => "example"]);
+$backgroundremoval = $client->BackgroundRemoval()->create(["image" => "example"]);
 print_r($backgroundremoval->data_get());
 ```
 
@@ -214,7 +214,7 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `create` | `($reqdata, $ctrl): array` | Create a new entity. |
+| `create` | `($reqdata, $ctrl): mixed` | Create a new entity, and return it. |
 | `data_get` | `(): array` | Get entity data. |
 | `data_set` | `($data): void` | Set entity data. |
 | `match_get` | `(): array` | Get entity match criteria. |
@@ -224,9 +224,9 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
-ops, a `list` for `list`) and throw on error. Wrap calls in
-`try`/`catch` to handle failures.
+Entity operations return the entity, and `list` an `array` of entities, one
+per record; an entity's `data_get()` reads its record (an `array`). They
+throw on error, so wrap calls in `try`/`catch` to handle failures.
 
 The `direct()` escape hatch never throws — it returns a result `array`
 you branch on via `$result["ok"]`:
@@ -247,6 +247,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `format` |  |
+| `image` | The image file to process. |
 | `imageUrl` | URL to download the processed image |
 | `message` |  |
 | `success` |  |
@@ -275,6 +276,7 @@ Create an instance: `$background_removal = $client->BackgroundRemoval();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `format` | `string` |  |
+| `image` | `string` | The image file to process. |
 | `imageUrl` | `string` | URL to download the processed image |
 | `message` | `string` |  |
 | `success` | `bool` |  |
@@ -283,6 +285,7 @@ Create an instance: `$background_removal = $client->BackgroundRemoval();`
 
 ```php
 $background_removal = $client->BackgroundRemoval()->create([
+    "image" => null, // string
 ]);
 ```
 
@@ -449,7 +452,7 @@ stores the returned data and match criteria internally.
 
 ```php
 $backgroundremoval = $client->BackgroundRemoval();
-$backgroundremoval->create(["format" => "example", "imageUrl" => "example", "message" => "example"]);
+$backgroundremoval->create(["image" => "example"]);
 
 // $backgroundremoval->data_get() now returns the backgroundremoval data from the last create
 // $backgroundremoval->match_get() returns the last match criteria

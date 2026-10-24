@@ -11,6 +11,9 @@ module AiBackgroundRemoverUtilities
     url = VoxgigStruct.join([spec.base, spec.prefix, spec.path, spec.suffix], "/", true)
     resmatch = {}
 
+    # Sent with the request, never recorded as the entity's match.
+    authquery = (spec.respond_to?(:authquery) ? spec.authquery : nil) || []
+
     # A route the definition ends with a slash keeps it: a server such as a
     # Django REST one redirects or refuses the route without it.
     orig = ctx.point ? VoxgigStruct.getprop(ctx.point, "orig") : nil
@@ -26,11 +29,24 @@ module AiBackgroundRemoverUtilities
         if val && key.is_a?(String)
           placeholder = "{#{key}}"
           val_str = val.is_a?(String) ? val : val.to_s
+          # A whole . or .. is a dot segment, which moves the request to another route.
+          if [".", ".."].include?(val_str)
+            return "", ctx.make_error("url_param_invalid", "URL path parameter #{key} cannot be \"#{val_str}\".")
+          end
           encoded = VoxgigStruct.escurl(val_str)
           url = url.gsub(placeholder, encoded)
           resmatch[key] = val
         end
       end
+    end
+
+    # A placeholder left in the route would send the request to the wrong route.
+    # The base's own placeholders are server variables, resolved with the options.
+    base = spec.base.is_a?(String) ? spec.base.sub(%r{/+\z}, "") : ""
+    route = url.delete_prefix(base)
+    unfilled = route.scan(/\{[^{}\/]+\}/)
+    unless unfilled.empty?
+      return "", ctx.make_error("url_param_missing", "URL path has no value for #{unfilled.join(', ')}.")
     end
 
     # Append query string from spec.query.
@@ -44,7 +60,7 @@ module AiBackgroundRemoverUtilities
           val_str = val.is_a?(String) ? val : val.to_s
           url += qsep + VoxgigStruct.escurl(key) + "=" + VoxgigStruct.escurl(val_str)
           qsep = "&"
-          resmatch[key] = val
+          resmatch[key] = val unless authquery.include?(key)
         end
       end
     end

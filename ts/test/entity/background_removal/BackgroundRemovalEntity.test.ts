@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { AiBackgroundRemoverSDK, BaseFeature, stdutil } from '../../..'
+import { AiBackgroundRemoverSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,18 @@ describe('BackgroundRemovalEntity', async () => {
   })
 
 
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = AiBackgroundRemoverSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.BackgroundRemoval().create({"format":1,"image":"x"} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.AI_BACKGROUND_REMOVER_TEST_LIVE
@@ -51,7 +63,7 @@ describe('BackgroundRemovalEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"format":{"a":true,"h":"Format","n":"format","r":false,"t":"`$STRING`","key$":"format","index$":0},"imageUrl":{"a":true,"fo":"uri","h":"Image Url","n":"imageUrl","r":false,"sh":"URL to download the processed image","t":"`$STRING`","key$":"imageUrl","index$":1},"message":{"a":true,"h":"Message","n":"message","r":false,"t":"`$STRING`","key$":"message","index$":2},"success":{"a":true,"h":"Success","n":"success","r":false,"t":"`$BOOLEAN`","key$":"success","index$":3}},"name":"background_removal","op":{"create":{"input":"data","name":"create","points":[{"a":true,"co":{"id":"POST /api/remove-background","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/api/remove-background","q":{},"r":{},"s":[{"lit":"api"},{"lit":"remove-background"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"}},"relations":{"ancestors":[]},"key$":"background_removal","name__orig":"background_removal","Name":"BackgroundRemoval","name_":"background_removal","name-":"background-removal","NAME":"BACKGROUND_REMOVAL","index$":0}, {"active":true,"entity":"background_removal","key$":"BasicBackgroundRemovalFlow","kind":"basic","name":"BasicBackgroundRemovalFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"background_removal_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0}]}, 'BackgroundRemoval', {"POST /api/remove-background":{"protocol":"http","requestBody":{"required":true,"content":{"multipart/form-data":{"schema":{"type":"object","required":["image"],"properties":{"image":{"type":"string","format":"binary","description":"The image file to process. Supported formats: JPG, PNG, WEBP"}}}}}},"parameters":[]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"format":{"a":true,"h":"Format","n":"format","r":false,"t":"`$STRING`","key$":"format","index$":0},"image":{"a":true,"fo":"binary","h":"Image","n":"image","r":true,"sh":"The image file to process.","t":"`$STRING`","key$":"image","index$":1},"imageUrl":{"a":true,"fo":"uri","h":"Image Url","n":"imageUrl","r":false,"sh":"URL to download the processed image","t":"`$STRING`","key$":"imageUrl","index$":2},"message":{"a":true,"h":"Message","n":"message","r":false,"t":"`$STRING`","key$":"message","index$":3},"success":{"a":true,"h":"Success","n":"success","r":false,"t":"`$BOOLEAN`","key$":"success","index$":4}},"name":"background_removal","op":{"create":{"input":"data","name":"create","points":[{"a":true,"co":{"id":"POST /api/remove-background","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/api/remove-background","q":{},"r":{},"rb":{"fields":[{"binary":true,"name":"image"}],"kind":"multipart","media":"multipart/form-data"},"rs":{"alternatives":[{"binary":true,"kind":"raw","media":"image/png"}],"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"remove-background"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"}},"relations":{"ancestors":[]},"key$":"background_removal","name__orig":"background_removal","Name":"BackgroundRemoval","name_":"background_removal","name-":"background-removal","NAME":"BACKGROUND_REMOVAL","index$":0}, {"active":true,"entity":"background_removal","key$":"BasicBackgroundRemovalFlow","kind":"basic","name":"BasicBackgroundRemovalFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"background_removal_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0}]}, 'BackgroundRemoval', {"POST /api/remove-background":{"protocol":"http","requestBody":{"required":true,"content":{"multipart/form-data":{"schema":{"type":"object","required":["image"],"properties":{"image":{"type":"string","format":"binary","description":"The image file to process. Supported formats: JPG, PNG, WEBP","key$":"image"}},"index$":1}}}},"parameters":[]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +84,12 @@ describe('BackgroundRemovalEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options
